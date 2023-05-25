@@ -1,0 +1,30 @@
+// Check if the button was clicked today
+function checkButtonClick() {
+  // Retrieve the last clicked date from local storage
+  var lastClickedDate = localStorage.getItem('lastClickedDate');
+
+  // Get the current date
+  var currentDate = new Date().toLocaleDateString();
+
+  // Compare the last clicked date with the current date
+  if (lastClickedDate !== currentDate) {
+    // Button was not clicked today, perform the desired action
+    performAction();
+
+    // Store the current date as the last clicked date
+    localStorage.setItem('lastClickedDate', currentDate);
+  } else {
+    // Button was already clicked today, do nothing
+    console.log('Button already clicked today.');
+  }
+}
+
+// Perform the desired action
+function performAction() {
+  console.log('Button clicked! Performing action...');
+  // Add your code here to perform the desired action when the button is clicked
+}
+
+// Attach the click event listener to the button
+var button = document.getElementById('your-button-id');
+button.addEventListener('click', checkButtonClick); 
