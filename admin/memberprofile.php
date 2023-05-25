@@ -12,7 +12,6 @@ if(mysqli_num_rows($data)>0){
 
 $row = mysqli_fetch_array($data);
 
-// echo '<h3 class="profile-username text-center">'.$row['fname'].'</h3>';
         
 } else {
     echo "Record Not found";
@@ -175,7 +174,6 @@ $row = mysqli_fetch_array($data);
   </nav>
   <!-- /.navbar -->
 
-  <!-- Main Sidebar Container -->
 
 
   <!-- Content Wrapper. Contains page content -->
@@ -552,34 +550,8 @@ echo '<p class="text-muted text-center">'.$row['emptype'].'</p>';
               </li>
 
             </ul>
-            <ul class="list-group list-group-horizontal rounded-0">
-              <li
-                class="list-group-item d-flex align-items-center ps-0 pe-3 py-1 rounded-0 border-0 bg-transparent">
-                <div class="form-check">
-                  <input class="form-check-input me-0" type="checkbox" name="lunchin" value="" id="flexCheckChecked2"
-                    aria-label="..." />
-                </div>
-              </li>
-              <li
-                class="list-group-item px-3 py-1 d-flex align-items-center flex-grow-1 border-0 bg-transparent">
-                <p id="lunchin" class="lead fw-normal mb-0">Lunch break time</p>
-              </li>
 
-            </ul>
-            <ul class="list-group list-group-horizontal rounded-0">
-              <li
-                class="list-group-item d-flex align-items-center ps-0 pe-3 py-1 rounded-0 border-0 bg-transparent">
-                <div class="form-check">
-                  <input class="form-check-input me-0" type="checkbox" name="lunchout" value="" id="flexCheckChecked2"
-                    aria-label="..." />
-                </div>
-              </li>
-              <li
-                class="list-group-item px-3 py-1 d-flex align-items-center flex-grow-1 border-0 bg-transparent">
-                <p id="lunchout" class="lead fw-normal mb-0">Lunch out time</p>
-              </li>
 
-            </ul>
             <div class="d-flex flex-row align-items-center">
                     
                     <input type="text" class="form-control form-control-lg" id="exampleFormControlInput1"
