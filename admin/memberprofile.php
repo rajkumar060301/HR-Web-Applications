@@ -507,17 +507,18 @@ echo '<p class="text-muted text-center">'.$row['emptype'].'</p>';
                     }
 
                 </script>
-                    <button type="button" class="btn btn-primary" onclick="lunchinTime();">Lunch In</button>
+                    <a href="lunchin.php"><button type="button" class="btn btn-primary" onclick="lunchinTime();">Lunch In</button></a>
 
                     <script>
                 function lunchinTime() {
 
                   var today = new Date();
                   var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-                  document.getElementById("lunchin").innerHTML = "Lunch break time "+ time;
+                  // document.getElementById("lunchin").innerHTML = "Lunch break time "+ time;
+
                     }
                 </script>
-                    <button type="button" class="btn btn-primary" onclick="lunchOut();">Lunch Out</button>
+                    <a href=""><button type="button" class="btn btn-primary" onclick="lunchOut();">Lunch Out</button></a>
 
                     <script>
                 function lunchOut() {
