@@ -501,8 +501,10 @@ echo '<p class="text-muted text-center">'.$row['emptype'].'</p>';
                   
                   var today = new Date();
                   var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+
                   document.getElementById("punchout").innerHTML = date+" time "+time;
-                  checkbox.value = new Date().toISOString().slice(0, 10);
+                  var checkbox = document.getElementById("punchout1");
+                  checkbox.value = time;
 
                     }
 
