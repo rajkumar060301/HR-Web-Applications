@@ -12,7 +12,7 @@ if(mysqli_num_rows($data)>0){
 
 $row = mysqli_fetch_array($data);
 
-        
+
 } else {
     echo "Record Not found";
 }
@@ -207,8 +207,8 @@ $row = mysqli_fetch_array($data);
             <div class="card card-primary card-outline">
               <div class="card-body box-profile">
                 <div class="text-center">
-                <?php 
-            echo "<img class='profile-user-img img-fluid img-circle' src=".$row['image'].' width=128px height="128px">'; 
+                <?php
+            echo "<img class='profile-user-img img-fluid img-circle' src=".$row['image'].' width=128px height="128px">';
             // echo $row['image'];
             ?>
                 </div>
@@ -282,9 +282,9 @@ echo '<p class="text-muted text-center">'.$row['emptype'].'</p>';
                     <!-- Post -->
                     <div class="post">
                       <div class="user-block">
-                        <?php 
+                        <?php
                         // echo '<img class='img-circle img-bordered-sm' src=".$row['image'].' alt="user image">';
-                        echo "<img class='img-circle img-bordered-sm' src=".$row['image'].'>'; 
+                        echo "<img class='img-circle img-bordered-sm' src=".$row['image'].'>';
 
                         ?>
                         <span class="username">
@@ -295,17 +295,17 @@ echo '<p class="text-muted text-center">'.$row['emptype'].'</p>';
                       </div>
                       <!-- /.user-block -->
                       <p>
-    
-                        <?php 
+
+                        <?php
 
                                 echo "<th>".'Infomation of profile'."</th>";
 
                         ?>
-                     
+
 
 
   <div class="container py-5">
-  
+
       <div class="col-lg-12">
       <div class="row">
       <div class="card col-md-6">
@@ -373,7 +373,7 @@ echo '<p class="text-muted text-center">'.$row['emptype'].'</p>';
         </div>
       <div class="card col-md-6">
           <div class="card-body">
-          
+
 
             <div class="row">
               <div class="col-sm-3">
@@ -424,7 +424,7 @@ echo '<p class="text-muted text-center">'.$row['emptype'].'</p>';
               </div>
             </div>
             <hr>
-            
+
             <div class="row">
               <div class="col-sm-3">
                 <p class="mb-0">Password</p>
@@ -438,8 +438,8 @@ echo '<p class="text-muted text-center">'.$row['emptype'].'</p>';
           </div>
         </div>
       </div>
-        
-    
+
+
     </div>
   </div>
 
@@ -452,7 +452,7 @@ echo '<p class="text-muted text-center">'.$row['emptype'].'</p>';
                     <!-- /.post -->
                   </div>
                   <!-- /.tab-pane -->
-                  
+
                   <!-- /.tab-pane -->
                 </div>
                 <!-- /.tab-content -->
@@ -474,7 +474,7 @@ echo '<p class="text-muted text-center">'.$row['emptype'].'</p>';
         <div class="card" id="list1" style="border-radius: .75rem; background-color: #eff1f2;">
 
         <!-- To do from start input  -->
-        <!-- <form action="todowork.php" method="post"> -->
+         <form action="todowork.php" method="post">
 
 
           <div class="card-body py-4 px-4 px-md-5">
@@ -497,7 +497,7 @@ echo '<p class="text-muted text-center">'.$row['emptype'].'</p>';
 
                   var today = new Date();
                   var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
-                  
+
                   var today = new Date();
                   var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
                   const btn = document.getElementById('punchouting');
@@ -513,65 +513,8 @@ echo '<p class="text-muted text-center">'.$row['emptype'].'</p>';
                 </script>
                     <a href="lunchin.php"><button type="button" class="btn btn-primary" onclick="lunchinTime();">Lunch In</button></a>
 
-                    <!-- <script>
-                function lunchinTime() {
+                    <a href="lunchout.php"><button type="button" class="btn btn-primary" >Lunch Out</button></a>
 
-                  var today = new Date();
-                  var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-                  // document.getElementById("lunchin").innerHTML = "Lunch break time "+ time;
-                  if (localStorage.getItem("submittedDate") !== getCurrentDate()) {
-                    // Save the current date in local storage
-                    localStorage.setItem("submittedDate", getCurrentDate());
-
-                    // Perform the form submission or any desired action
-                    // Example: document.getElementById("myForm").submit();
-                    // console.log(alert('lunch time set'));
-                    document.location.href ='lunchin.php';
-
-                  } else {
-                    // Display a message or take alternative action
-                    console.log(alert('lunch time already submitted today!'));
-                    
-
-                    }
-
-                    }
-
-                    function getCurrentDate() {
-                        var today = new Date();
-                        var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
-                        return date;
-                      }
-                </script> -->
-                    <button type="button" class="btn btn-primary" onclick="lunchOut();">Lunch Out</button>
-
-                    <script>
-                function lunchOut() {
-
-                  var today = new Date();
-                  var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-                  // document.getElementById("lunchout").innerHTML = "Lunch Out time "+time;
-                  if (localStorage.getItem("submittedDate") !== getCurrentDate()) {
-                    // Save the current date in local storage
-                    localStorage.setItem("submittedDate", getCurrentDate());
-
-                    // Perform the form submission or any desired action
-                    // Example: document.getElementById("myForm").submit();
-                    // console.log(alert('lunch out time set'));
-                    document.location.href ='lunchout.php';
-
-                  } else {
-                    // Display a message or take alternative action
-                    console.log(alert('lunch out already submitted today!'));
-
-                    }                  
-                    }
-                    function getCurrentDate() {
-                        var today = new Date();
-                        var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
-                        return date;
-                      }                    
-                </script>
 
 
 
@@ -580,7 +523,7 @@ echo '<p class="text-muted text-center">'.$row['emptype'].'</p>';
             </div>
 
             <hr class="my-4">
-            <form action="todowork.php" method="post">
+<!--            <form action="todowork.php" method="post">-->
 
             <ul class="list-group list-group-horizontal rounded-0">
               <li
@@ -596,20 +539,15 @@ echo '<p class="text-muted text-center">'.$row['emptype'].'</p>';
               </li>
 
             </ul>
-
-
             <div class="d-flex flex-row align-items-center">
-                    
+
                     <input type="text" class="form-control form-control-lg" id="exampleFormControlInput1"
                       name="task" placeholder="Add new task ">
                     <a href="#!" data-mdb-toggle="tooltip" title="Set due date">
                     </a>
 
-
-
                   </div>
 
-                  <!-- <input type="text" placeholder="choose time in hours and minutes"> -->
       <div class="input-group date"  style="margin-top:5px">
         <input type="text" class="form-control" name="upwork" id="date" placeholder="Upwork time" onfocus="(this.type='time')" required>
         <span class="input-group-append">
@@ -622,48 +560,19 @@ echo '<p class="text-muted text-center">'.$row['emptype'].'</p>';
         <input type="text" class="form-control" name="webtracker" id="date" placeholder="Web tracking time" onfocus="(this.type='time')" required>
         <span class="input-group-append">
           <span class="input-group-text bg-light d-block">
-            <!-- <i class="fa fa-calendar" id="date"></i> -->
           </span>
         </span>
       </div>
-
-            <button type="submit" name='submit' onclick="submitForm(); return false;"> SUBMIT</button>
+            <button type="submit" name='submit' > SUBMIT</button>
 
             </form>
-            <script>
-    function submitForm() {
-      // Check if form has been submitted today
-      if (localStorage.getItem("submittedDate") !== getCurrentDate()) {
-        // Save the current date in local storage
-        localStorage.setItem("submittedDate", getCurrentDate());
-
-        // Perform the form submission or any desired action
-        // Example: document.getElementById("myForm").submit();
-        console.log(alert('submitted'));
-        document.location.href ='todowork.php';
-
-      } else {
-        // Display a message or take alternative action
-        console.log(alert('Form already submitted today!'));
-
-      }
-    }
-
-    function getCurrentDate() {
-      var today = new Date();
-      var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
-      return date;
-    }
-  </script>
-
-
           </div>
         </div>
       </div>
     </div>
   </div>
 </section>
-    
+
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->

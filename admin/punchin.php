@@ -1,17 +1,26 @@
 <?php
 session_start();
-
-
+$iD=$_SESSION['teamID'];
 $myConnection = mysqli_connect("localhost", "root", "", "firstday");
 if(!$myConnection){
     echo "<script>alert('Database not connected')</script>";
 
 }
+$read_query = "SELECT * FROM add_teammates where id=".$iD;
 
-$iD=$_SESSION['teamID'];
+$data = mysqli_query($myConnection, $read_query);
+
+if(mysqli_num_rows($data)>0){
+
+  $row = mysqli_fetch_array($data);
+
+
+} else {
+  echo "Record Not found";
+}
 
 // before fetch date and id of team member from todowork table
-$currentDate = date("Y/m/d"); 
+$currentDate = date("Y/m/d");
 $read_todowork = " SELECT * FROM todowork where `id`='$iD' AND `date`='$currentDate' ";
 
 $data_todo = mysqli_query($myConnection, $read_todowork);
@@ -23,7 +32,7 @@ $row_data = mysqli_fetch_array($data_todo);
 echo "<script>alert('Already punch in today')</script>";
 echo "<script>location.href='memberprofile.php'</script>";
 
-       
+
 } else {
 //    echo "Record Not found";
 $fname = $row['fname'];
@@ -37,7 +46,7 @@ if(mysqli_query($myConnection,$inset_query)){
     echo "<script>alert('Punch in successfully')</script>";
     echo "<script>location.href='memberprofile.php'</script>";
     // echo "data inserted";
-  
+
 }
 else{
     echo "<script>alert('Not punch in')</script>";
