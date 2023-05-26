@@ -474,7 +474,7 @@ echo '<p class="text-muted text-center">'.$row['emptype'].'</p>';
         <div class="card" id="list1" style="border-radius: .75rem; background-color: #eff1f2;">
 
         <!-- To do from start input  -->
-        <form action="todowork.php" method="post">
+        <!-- <form action="todowork.php" method="post"> -->
 
 
           <div class="card-body py-4 px-4 px-md-5">
@@ -511,7 +511,7 @@ echo '<p class="text-muted text-center">'.$row['emptype'].'</p>';
                     }
 
                 </script>
-                    <a href="lunchin.php"><button type="button" class="btn btn-primary" onclick="lunchinTime();">Lunch In</button></a>
+                    <button type="button" class="btn btn-primary" onclick="lunchinTime();">Lunch In</button>
 
                     <script>
                 function lunchinTime() {
@@ -519,10 +519,31 @@ echo '<p class="text-muted text-center">'.$row['emptype'].'</p>';
                   var today = new Date();
                   var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
                   // document.getElementById("lunchin").innerHTML = "Lunch break time "+ time;
+                  if (localStorage.getItem("submittedDate") !== getCurrentDate()) {
+                    // Save the current date in local storage
+                    localStorage.setItem("submittedDate", getCurrentDate());
+
+                    // Perform the form submission or any desired action
+                    // Example: document.getElementById("myForm").submit();
+                    // console.log(alert('lunch time set'));
+                    document.location.href ='lunchin.php';
+
+                  } else {
+                    // Display a message or take alternative action
+                    console.log(alert('lunch time already submitted today!'));
+                    
 
                     }
+
+                    }
+
+                    function getCurrentDate() {
+                        var today = new Date();
+                        var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+                        return date;
+                      }
                 </script>
-                    <a href="lunchout.php"><button type="button" class="btn btn-primary" onclick="lunchOut();">Lunch Out</button></a>
+                    <button type="button" class="btn btn-primary" onclick="lunchOut();">Lunch Out</button>
 
                     <script>
                 function lunchOut() {
@@ -530,7 +551,26 @@ echo '<p class="text-muted text-center">'.$row['emptype'].'</p>';
                   var today = new Date();
                   var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
                   // document.getElementById("lunchout").innerHTML = "Lunch Out time "+time;
+                  if (localStorage.getItem("submittedDate") !== getCurrentDate()) {
+                    // Save the current date in local storage
+                    localStorage.setItem("submittedDate", getCurrentDate());
+
+                    // Perform the form submission or any desired action
+                    // Example: document.getElementById("myForm").submit();
+                    // console.log(alert('lunch out time set'));
+                    document.location.href ='lunchout.php';
+
+                  } else {
+                    // Display a message or take alternative action
+                    console.log(alert('lunch out already submitted today!'));
+
+                    }                  
                     }
+                    function getCurrentDate() {
+                        var today = new Date();
+                        var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+                        return date;
+                      }                    
                 </script>
 
 
@@ -540,6 +580,7 @@ echo '<p class="text-muted text-center">'.$row['emptype'].'</p>';
             </div>
 
             <hr class="my-4">
+            <form action="todowork.php" method="post">
 
             <ul class="list-group list-group-horizontal rounded-0">
               <li
@@ -614,10 +655,6 @@ echo '<p class="text-muted text-center">'.$row['emptype'].'</p>';
       return date;
     }
   </script>
-
-
-            
-
 
 
           </div>

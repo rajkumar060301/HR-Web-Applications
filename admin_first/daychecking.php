@@ -9,7 +9,7 @@
         localStorage.setItem("submittedDate", getCurrentDate());
 
         // Perform the form submission or any desired action
-        Example: document.getElementById("myForm").submit();
+        document.getElementById("myForm").submit();
         console.log(alert('submitted'));
         document.location.href ='raj.php';
 
