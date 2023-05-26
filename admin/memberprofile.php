@@ -488,7 +488,8 @@ echo '<p class="text-muted text-center">'.$row['emptype'].'</p>';
             <div class="pb-2">
               <div class="card">
                 <div class="card-body">
-                <a href="punchin.php"><button type="button" class="btn btn-primary" name="punchin" onclick="myFunction()">Punch In</button></a>
+                <a href="punchin.php"><button type="button" class="btn btn-primary"  id="punchin" name="punchin" onclick="myFunction()" >Punch In</button></a>
+
 
                     <button type="button" id="punchouting" class="btn btn-primary" onclick="punchOut()">Punch Out</button>
                     <script>
@@ -499,6 +500,9 @@ echo '<p class="text-muted text-center">'.$row['emptype'].'</p>';
                   
                   var today = new Date();
                   var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+                  const btn = document.getElementById('punchouting');
+
+                  btn.style.backgroundColor = 'green';
 
                   document.getElementById("punchout").innerHTML = date+" time "+time;
                   var checkbox = document.getElementById("punchout1");
@@ -582,9 +586,34 @@ echo '<p class="text-muted text-center">'.$row['emptype'].'</p>';
         </span>
       </div>
 
-            <button type="submit" name='submit'> SUBMIT</button>
+            <button type="submit" name='submit' onclick="submitForm(); return false;"> SUBMIT</button>
 
             </form>
+            <script>
+    function submitForm() {
+      // Check if form has been submitted today
+      if (localStorage.getItem("submittedDate") !== getCurrentDate()) {
+        // Save the current date in local storage
+        localStorage.setItem("submittedDate", getCurrentDate());
+
+        // Perform the form submission or any desired action
+        // Example: document.getElementById("myForm").submit();
+        console.log(alert('submitted'));
+        document.location.href ='todowork.php';
+
+      } else {
+        // Display a message or take alternative action
+        console.log(alert('Form already submitted today!'));
+
+      }
+    }
+
+    function getCurrentDate() {
+      var today = new Date();
+      var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+      return date;
+    }
+  </script>
 
 
             
