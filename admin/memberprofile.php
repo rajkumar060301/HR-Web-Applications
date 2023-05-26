@@ -511,9 +511,9 @@ echo '<p class="text-muted text-center">'.$row['emptype'].'</p>';
                     }
 
                 </script>
-                    <button type="button" class="btn btn-primary" onclick="lunchinTime();">Lunch In</button>
+                    <a href="lunchin.php"><button type="button" class="btn btn-primary" onclick="lunchinTime();">Lunch In</button></a>
 
-                    <script>
+                    <!-- <script>
                 function lunchinTime() {
 
                   var today = new Date();
@@ -542,7 +542,7 @@ echo '<p class="text-muted text-center">'.$row['emptype'].'</p>';
                         var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
                         return date;
                       }
-                </script>
+                </script> -->
                     <button type="button" class="btn btn-primary" onclick="lunchOut();">Lunch Out</button>
 
                     <script>
