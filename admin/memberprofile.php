@@ -545,20 +545,57 @@ echo '<p class="text-muted text-center">'.$row['emptype'].'</p>';
                   </div>
 
       <div class="input-group date"  style="margin-top:5px">
-        <input type="text" class="form-control" name="upwork" id="date" placeholder="Upwork time" onfocus="(this.type='time')" required>
-        <span class="input-group-append">
-          <span class="input-group-text bg-light d-block">
-            <!-- <i class="fa fa-calendar" id="date"></i> -->
-          </span>
-        </span>
+      <p class="btn btn-primary">Upwork time</p>
+        <label for="hour">Hour:</label>
+        <select name="upworkhour" id="hour" style="width: 100px;height :35px ">
+            <?php
+            for ($i = 1; $i <= 24; $i++) {
+                echo "<option value='$i'>$i</option>";
+            }
+            ?>
+        </select>
+
+        <label for="minute">Minute:</label>
+        <select name="upworkminute" id="minute" style="width: 100px;height :35px ">
+            <?php
+            for ($i = 0; $i <= 59; $i++) {
+                $formattedMinute = sprintf("%02d", $i); // Pad single digit minutes with leading zero
+                echo "<option value='$i'>$formattedMinute</option>";
+            }
+            ?>
+        </select>
+    
       </div>
       <div class="input-group date"  style="margin-top:5px">
+      <p class="btn btn-primary">Webtracker time</p>
+        <label for="hour">Hour:</label>
+        <select name="webtrackerhour" id="hour" style="width: 100px;height :35px ">
+            <?php
+            for ($i = 1; $i <= 24; $i++) {
+                echo "<option value='$i'>$i</option>";
+            }
+            ?>
+        </select>
+
+        <label for="minute">Minute:</label>
+        <select name="webtrackerminute" id="minute" style="width: 100px;height :35px ">
+
+            <?php
+            for ($i = 0; $i <= 59; $i++) {
+                $formattedMinute = sprintf("%02d", $i); // Pad single digit minutes with leading zero
+                echo "<option value='$i'>$formattedMinute</option>";
+            }
+            ?>
+        </select>
+    
+      </div>
+      <!-- <div class="input-group date"  style="margin-top:5px">
         <input type="text" class="form-control" name="webtracker" id="date" placeholder="Web tracking time" onfocus="(this.type='time')" required>
         <span class="input-group-append">
           <span class="input-group-text bg-light d-block">
           </span>
         </span>
-      </div>
+      </div> -->
             <button type="submit" name='submit' > SUBMIT</button>
 
             </form>

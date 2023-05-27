@@ -3,10 +3,14 @@ session_start();
 include "config/config.php";
 $iD =  $_SESSION['teamID'];
 $punchout = $_POST['punchout'];
+$upworkhour=$_POST['upworkhour'];
+$upworkminute=$_POST['upworkminute'];
+$webtrackerhour=$_POST['webtrackerhour'];
+$webtrackerminute=$_POST['webtrackerminute'];
 
 $task = $_POST['task'];
-$upwork = $_POST['upwork'];
-$webtracker = $_POST['webtracker'];
+$upwork = $upworkhour.":".$upworkminute;
+$webtracker = $webtrackerhour.":".$webtrackerminute;
 
 date_default_timezone_set("Asia/Calcutta");
 $time = date('h:i:s');
