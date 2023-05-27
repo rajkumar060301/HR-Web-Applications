@@ -56,14 +56,6 @@
           </span>
         </span>
       </div>
-      <!-- <script>
-        (document).ready(function(){
-          $("#date").datepicker();
-        });
-      </script> -->
-
-
-
 
         <div class="input-group date"id="datepicker1">
           <input type="text" class="form-control" placeholder="DOJ">

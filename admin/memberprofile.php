@@ -2,7 +2,7 @@
 session_start();
  $iD=$_SESSION['teamID'];
 
- $myConnection = mysqli_connect("localhost", "root", "", "firstday");
+ include "config/config.php";
 
 $read_query = "SELECT * FROM add_teammates where id=".$iD;
 
@@ -283,7 +283,6 @@ echo '<p class="text-muted text-center">'.$row['emptype'].'</p>';
                     <div class="post">
                       <div class="user-block">
                         <?php
-                        // echo '<img class='img-circle img-bordered-sm' src=".$row['image'].' alt="user image">';
                         echo "<img class='img-circle img-bordered-sm' src=".$row['image'].'>';
 
                         ?>
@@ -365,9 +364,6 @@ echo '<p class="text-muted text-center">'.$row['emptype'].'</p>';
               </div>
             </div>
             <hr>
-
-
-
 
           </div>
         </div>

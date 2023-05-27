@@ -13,7 +13,6 @@ $academicsfileerror = $academics['error'];
 $tempfile = $academics['tmp_name'];
 $iD=$_GET['id'];
 
-// $filecheck = strtolower(end($fileext));
     $destinationacademics='academicsfile/'.$academicsfile;
     move_uploaded_file($tempfile,$destinationacademics);
 
@@ -23,14 +22,10 @@ $currentaddress = $_POST['caddress'];
 $phone = $_POST['phone'];
 $emergencynumber = $_POST['emergencynumber'];
 
-$connection = mysqli_connect('localhost','root','','firstday');
-if(!$connection){
-     echo "<script>alert('Database not connected')</script>";
-    //  echo "<script>location.href='addteammate.php'</script>";
-} 
+include "config/config.php";
 
 $sql = "SELECT image FROM add_teammates WHERE id = $iD";
-$result = $connection->query($sql);
+$result = $myConnection->query($sql);
 if ($result->num_rows > 0) {
     $row = $result->fetch_assoc();
     $previousImage = $row['image'];
@@ -67,7 +62,7 @@ $password= randomPassword();
 
     $update = "UPDATE add_teammates SET `fname`='$fname' ,`dob`='$dob',`dateofjoining`='$doj',`emptype`='$emptype',`pemail`='$personalemail',`oemail`='$officialemail',`adhar`='$adhar',`academics`='$destinationacademics',`paddress`='$paddress',`caddress`='$currentaddress',`pnumber`='$phone',`anumber`='$emergencynumber',`image`='$image',`password`='$password' WHERE id=".$iD;
 
-    if(mysqli_query($connection,$update)){
+    if(mysqli_query($myConnection,$update)){
         echo "<script>alert('Updation is successfully')</script>";
         echo "<script>location.href='listteammate.php'</script>";
         // echo "Updation successfully";

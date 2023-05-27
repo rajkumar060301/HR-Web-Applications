@@ -191,28 +191,6 @@
           </li>
           
           <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-edit"></i>
-              <p>
-                Forms
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="./register.php" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Register</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="./login.html" class="nav-link active">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Login</p>
-                </a>
-              </li>
-             
-        </ul>
 
         <li class="nav-item">
             <a href="#" class="nav-link">
@@ -307,17 +285,14 @@
               </thead>
 
   <?php
- $myConnection = mysqli_connect("localhost", "root", "", "firstday");
-
+include "config/config.php";
 $read_query = "SELECT * FROM add_teammates ";
 
 $data = mysqli_query($myConnection, $read_query);
 
 if(mysqli_num_rows($data)>0){
 
-
     while($row = mysqli_fetch_array($data)){
-
         echo"<tr>";
         echo "<td>".$row['id']."</td>";
         echo "<td>".$row['fname']."</td>";

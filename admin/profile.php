@@ -261,7 +261,7 @@
     <?php
  $iD=$_GET['id'];
 
- $myConnection = mysqli_connect("localhost", "root", "", "firstday");
+include "config/config.php";
 
 $read_query = "SELECT * FROM add_teammates where id=".$iD;
 
@@ -271,7 +271,6 @@ if(mysqli_num_rows($data)>0){
 
 $row = mysqli_fetch_array($data);
 
-// echo '<h3 class="profile-username text-center">'.$row['fname'].'</h3>';
         
 } else {
     echo "Record Not found";
@@ -289,7 +288,6 @@ $row = mysqli_fetch_array($data);
                 <div class="text-center">
                 <?php 
             echo "<img class='profile-user-img img-fluid img-circle' src=".$row['image'].' width=128px height="128px">'; 
-            // echo $row['image'];
             ?>
                 </div>
 
@@ -353,8 +351,7 @@ echo '<p class="text-muted text-center">'.$row['emptype'].'</p>';
               <div class="card-header p-2">
                 <ul class="nav nav-pills">
                   <li class="nav-item"><a class="nav-link active" href="#activity" data-toggle="tab">uploaded</a></li>
-                  <!-- <li class="nav-item"><a class="nav-link" href="#timeline" data-toggle="tab">Timeline</a></li>
-                  <li class="nav-item"><a class="nav-link" href="#settings" data-toggle="tab">Settings</a></li> -->
+
                 </ul>
               </div><!-- /.card-header -->
               <div class="card-body">
@@ -364,7 +361,6 @@ echo '<p class="text-muted text-center">'.$row['emptype'].'</p>';
                     <div class="post">
                       <div class="user-block">
                         <?php 
-                        // echo '<img class='img-circle img-bordered-sm' src=".$row['image'].' alt="user image">';
                         echo "<img class='img-circle img-bordered-sm' src=".$row['image'].'>'; 
 
                         ?>
@@ -540,9 +536,7 @@ echo '<p class="text-muted text-center">'.$row['emptype'].'</p>';
                     </div>
                     <!-- /.post -->
 
-                    <!-- Post -->
 
-                    <!-- /.post -->
                   </div>
                   <!-- /.tab-pane -->
                   

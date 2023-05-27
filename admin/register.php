@@ -1,27 +1,22 @@
 <?php 
 session_start();
-$connection = mysqli_connect('localhost','root','','firstday');
-if (!$connection){
-    echo "database not connected";
-}
+include "config/config.php";
+
 $message ='';
 
 if(isset($_POST['submit'])){
     $email = $_POST['email'];
   
  $sql = "SELECT * from register where email='$email'";
-//  echo "SELECT * from register where email='$email'";
- $result = mysqli_query($connection,$sql);
+ $result = mysqli_query($myConnection,$sql);
 
     if (mysqli_num_rows($result) > 0) {
-        // print_r($result);
    
      $row = mysqli_fetch_assoc($result);
      if($email==isset($row['email'])){
             $message = "Email ID Already Exists !!";
             echo "<script>alert('Email ID Already Exists !!')</script>)";
             echo "<script>location.href='register.php'</script>";
-            // echo "email is match";
 
      }
      else{
@@ -34,7 +29,7 @@ if(isset($_POST['submit'])){
 
     $inset_query = "INSERT INTO register(`fname`,`email`,`password`,`terms`) values('".$_POST['fname']."','".$_POST['email']."','".md5($_POST['password'])."','".$_POST['terms']."')";
     
-    if(mysqli_query($connection,$inset_query)){
+    if(mysqli_query($myConnection,$inset_query)){
 
         echo "<script>location.href='./index3.php'</script>";
 

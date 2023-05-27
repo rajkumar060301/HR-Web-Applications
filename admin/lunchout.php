@@ -1,11 +1,8 @@
 <?php
 session_start();
 $iD=$_SESSION['teamID'];
-$myConnection = mysqli_connect("localhost", "root", "", "firstday");
-if(!$myConnection){
-  echo "<script>alert('Database not connected')</script>";
+include "config/config.php";
 
-}
 date_default_timezone_set("Asia/Calcutta");
 $time = date('h:i:s');
 // before fetch date and id of team member from todowork table

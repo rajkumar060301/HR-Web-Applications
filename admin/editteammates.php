@@ -30,7 +30,7 @@
 <!-- Site wrapper -->
 <?php
 $iD=$_GET['id'];
- $myConnection = mysqli_connect("localhost", "root", "", "firstday");
+include "config/config.php";
 
 $read_query = "SELECT * FROM add_teammates WHERE id=".$iD;
 
@@ -40,7 +40,6 @@ if(mysqli_num_rows($data)>0){
 
 $row = mysqli_fetch_array($data);
 
-// echo '<h3 class="profile-username text-center">'.$row['fname'].'</h3>';
         
 } else {
     echo "Record Not found";
@@ -196,10 +195,8 @@ $row = mysqli_fetch_array($data);
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <!-- <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image"> -->
           <?php 
             echo "<img class='img-circle elevation-2' src=".$row['image'].' width=128px height="128px">'; 
-            // echo $row['image'];
             ?>
         </div>
         <div class="info">
@@ -214,8 +211,7 @@ $row = mysqli_fetch_array($data);
       <nav class="mt-2">
         
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-          <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
+
           <li class="nav-item menu-open">
             <a href="index3.php" class="nav-link active">
               <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -291,12 +287,8 @@ $row = mysqli_fetch_array($data);
           <div class="col-sm-6">
             <h1>Update Team member</h1>
           </div>
-          <!-- <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Add Teammate</li>
-            </ol>
-          </div> -->
+
+       
         </div>
       </div><!-- /.container-fluid -->
     </section>
@@ -336,12 +328,10 @@ $row = mysqli_fetch_array($data);
           <input type="text" class="form-control" name="doj" placeholder="<?php echo $row['dateofjoining']; ?>" onfocus="(this.type='date')" required>
           <div class="input-group-append">
             <div class="input-group-text">
-            <!-- <i class="fa fa-calendar" id="date"></i> -->
             </div>
           </div>
         </div>
         <div class="input-group mb-3" style="margin-top:10px">
-          <!-- <input for="emptype" type="password" class="form-control" name="emptype" placeholder="Employment type"> -->
           
           <select name="emptype" class="form-control" required>
           <option value="#" placeholder="Employee type"><?php echo $row['emptype']; ?></option>
@@ -352,7 +342,6 @@ $row = mysqli_fetch_array($data);
           </select>
           <div class="input-group-append">
             <div class="input-group-text">
-              <!-- <span class="fas fa-lock"></span> -->
             </div>
           </div>
         </div>
@@ -360,7 +349,6 @@ $row = mysqli_fetch_array($data);
           <input type="email" class="form-control" name="personalemail" placeholder="<?php echo $row['pemail']; ?>" required >
           <div class="input-group-append">
             <div class="input-group-text">
-              <!-- <span class="fas fa-lock"></span> -->
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope-at-fill" viewBox="0 0 16 16">
   <path d="M2 2A2 2 0 0 0 .05 3.555L8 8.414l7.95-4.859A2 2 0 0 0 14 2H2Zm-2 9.8V4.698l5.803 3.546L0 11.801Zm6.761-2.97-6.57 4.026A2 2 0 0 0 2 14h6.256A4.493 4.493 0 0 1 8 12.5a4.49 4.49 0 0 1 1.606-3.446l-.367-.225L8 9.586l-1.239-.757ZM16 9.671V4.697l-5.803 3.546.338.208A4.482 4.482 0 0 1 12.5 8c1.414 0 2.675.652 3.5 1.671Z"/>
   <path d="M15.834 12.244c0 1.168-.577 2.025-1.587 2.025-.503 0-1.002-.228-1.12-.648h-.043c-.118.416-.543.643-1.015.643-.77 0-1.259-.542-1.259-1.434v-.529c0-.844.481-1.4 1.26-1.4.585 0 .87.333.953.63h.03v-.568h.905v2.19c0 .272.18.42.411.42.315 0 .639-.415.639-1.39v-.118c0-1.277-.95-2.326-2.484-2.326h-.04c-1.582 0-2.64 1.067-2.64 2.724v.157c0 1.867 1.237 2.654 2.57 2.654h.045c.507 0 .935-.07 1.18-.18v.731c-.219.1-.643.175-1.237.175h-.044C10.438 16 9 14.82 9 12.646v-.214C9 10.36 10.421 9 12.485 9h.035c2.12 0 3.314 1.43 3.314 3.034v.21Zm-4.04.21v.227c0 .586.227.8.581.8.31 0 .564-.17.564-.743v-.367c0-.516-.275-.708-.572-.708-.346 0-.573.245-.573.791Z"/>
@@ -372,7 +360,6 @@ $row = mysqli_fetch_array($data);
           <input type="email" class="form-control" name="officialemail" placeholder="<?php echo $row['oemail']; ?>" required>
           <div class="input-group-append">
             <div class="input-group-text">
-              <!-- <span class="fas fa-lock"></span> -->
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope-at-fill" viewBox="0 0 16 16">
   <path d="M2 2A2 2 0 0 0 .05 3.555L8 8.414l7.95-4.859A2 2 0 0 0 14 2H2Zm-2 9.8V4.698l5.803 3.546L0 11.801Zm6.761-2.97-6.57 4.026A2 2 0 0 0 2 14h6.256A4.493 4.493 0 0 1 8 12.5a4.49 4.49 0 0 1 1.606-3.446l-.367-.225L8 9.586l-1.239-.757ZM16 9.671V4.697l-5.803 3.546.338.208A4.482 4.482 0 0 1 12.5 8c1.414 0 2.675.652 3.5 1.671Z"/>
   <path d="M15.834 12.244c0 1.168-.577 2.025-1.587 2.025-.503 0-1.002-.228-1.12-.648h-.043c-.118.416-.543.643-1.015.643-.77 0-1.259-.542-1.259-1.434v-.529c0-.844.481-1.4 1.26-1.4.585 0 .87.333.953.63h.03v-.568h.905v2.19c0 .272.18.42.411.42.315 0 .639-.415.639-1.39v-.118c0-1.277-.95-2.326-2.484-2.326h-.04c-1.582 0-2.64 1.067-2.64 2.724v.157c0 1.867 1.237 2.654 2.57 2.654h.045c.507 0 .935-.07 1.18-.18v.731c-.219.1-.643.175-1.237.175h-.044C10.438 16 9 14.82 9 12.646v-.214C9 10.36 10.421 9 12.485 9h.035c2.12 0 3.314 1.43 3.314 3.034v.21Zm-4.04.21v.227c0 .586.227.8.581.8.31 0 .564-.17.564-.743v-.367c0-.516-.275-.708-.572-.708-.346 0-.573.245-.573.791Z"/>
@@ -385,7 +372,6 @@ $row = mysqli_fetch_array($data);
           <input type="text" class="form-control" name="adhar" placeholder="<?php echo $row['adhar']; ?>" required>
           <div class="input-group-append">
             <div class="input-group-text">
-              <!-- <span class="fas fa-lock"></span> -->
             </div>
           </div>
         </div>
@@ -393,7 +379,6 @@ $row = mysqli_fetch_array($data);
           <input type="file" class="form-control" name="academics" placeholder="<?php echo $row['academics']; ?>" >
           <div class="input-group-append">
             <div class="input-group-text">
-              <!-- <span class="fas fa-lock"></span> -->
             </div>
           </div>
         </div>
@@ -401,7 +386,6 @@ $row = mysqli_fetch_array($data);
           <input type="text" class="form-control" name="paddress" placeholder="<?php echo $row['paddress']; ?>" required>
           <div class="input-group-append">
             <div class="input-group-text">
-              <!-- <span class="fas fa-lock"></span> -->
             </div>
           </div>
         </div>
@@ -409,7 +393,6 @@ $row = mysqli_fetch_array($data);
           <input type="text" class="form-control" name="caddress" placeholder="<?php echo $row['caddress']; ?>" required>
           <div class="input-group-append">
             <div class="input-group-text">
-              <!-- <span class="fas fa-lock"></span> -->
             </div>
           </div>
         </div>
@@ -436,7 +419,6 @@ $row = mysqli_fetch_array($data);
           <input type="file" class="form-control" name="file" placeholder="<?php echo $row['image']; ?>">
           <div class="input-group-append">
             <div class="input-group-text">
-              <!-- <span class="fas fa-lock"></span> -->
             </div>
           </div>
         </div>

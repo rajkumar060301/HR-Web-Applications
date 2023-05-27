@@ -1,7 +1,23 @@
-<!-- <?php 
-  echo $_SESSION['user'];
+<?php 
+session_start();
+$id = $_SESSION['adminID'];
+include "config/config.php";
 
-?> -->
+$fetch_query = "SELECT * FROM register where id=".$id;
+
+$data_register = mysqli_query($myConnection, $fetch_query);
+
+if(mysqli_num_rows($data_register)>0){
+
+$row_data = mysqli_fetch_array($data_register);
+
+// echo '<h3 class="profile-username text-center">'.$row_data['fname'].'</h3>';
+        
+} else {
+    echo "Record Not found";
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -44,31 +60,9 @@
 
 
 <body class="hold-transition sidebar-mini">
-<!-- <?php
- $iD=$_GET['id'];
 
- $myConnection = mysqli_connect("localhost", "root", "", "firstday");
-
-$read_query = "SELECT * FROM add_teammates where id=".$iD;
-
-$data = mysqli_query($myConnection, $read_query);
-
-if(mysqli_num_rows($data)>0){
-
-$row = mysqli_fetch_array($data);
-
-echo '<h3 class="profile-username text-center">'.$row['fname'].'</h3>';
-        
-} else {
-    echo "Record Not found";
-}
-
-?> -->
 <div class="wrapper">
   <!-- Navbar -->
-
-  <!-- /.navbar -->
-
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
@@ -105,29 +99,7 @@ echo '<h3 class="profile-username text-center">'.$row['fname'].'</h3>';
    
           </li>
           
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-edit"></i>
-              <p>
-                Forms
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="./register.php" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Register</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="./login.html" class="nav-link active">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Login</p>
-                </a>
-              </li>
-             
-        </ul>
+
 
         <li class="nav-item">
             <a href="#" class="nav-link">

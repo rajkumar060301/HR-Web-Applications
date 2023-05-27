@@ -1,9 +1,6 @@
 <?php
 session_start();
-$myConnection = mysqli_connect('localhost','root','','firstday');
-if(!$myConnection){
-     echo "<script>alert('Database not connected')</script>";
-}
+include "config/config.php";
 $iD =  $_SESSION['teamID'];
 $punchout = $_POST['punchout'];
 

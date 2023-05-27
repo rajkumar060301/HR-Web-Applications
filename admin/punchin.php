@@ -1,12 +1,7 @@
 <?php
 session_start();
 $iD=$_SESSION['teamID'];
-$myConnection = mysqli_connect("localhost", "root", "", "firstday");
-if(!$myConnection){
-    echo "<script>alert('Database not connected')</script>";
-
-}
-
+include "config/config.php";
 
 // before fetch date and id of team member from todowork table
 $currentDate = date("Y/m/d");
@@ -25,7 +20,6 @@ echo "<script>location.href='memberprofile.php'</script>";
 
 } else {
 
-//    echo "Record Not found";
 
   $read_query = "SELECT * FROM add_teammates where id=" . $iD;
 
@@ -47,12 +41,10 @@ echo "<script>location.href='memberprofile.php'</script>";
   if (mysqli_query($myConnection, $inset_query)) {
     echo "<script>alert('Punch in successfully')</script>";
     echo "<script>location.href='memberprofile.php'</script>";
-    // echo "data inserted";
 
   } else {
     echo "<script>alert('Not punch in')</script>";
     echo "<script>location.href='memberprofile.php'</script>";
-    // echo "data not inserted properly";
 
   }
 }
