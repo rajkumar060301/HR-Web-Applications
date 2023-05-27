@@ -484,8 +484,7 @@ echo '<p class="text-muted text-center">'.$row['emptype'].'</p>';
             <div class="pb-2">
               <div class="card">
                 <div class="card-body">
-                <a href="punchin.php"><button type="button" class="btn btn-primary"  id="punchin" name="punchin" onclick="myFunction()" >Punch In</button></a>
-
+                <a href="punchin.php?id='.$row['id'].'"><button type="button" class="btn btn-primary"  id="punchin" name="punchin" onclick="myFunction()" >Punch In</button></a>
 
                     <button type="button" id="punchouting" class="btn btn-primary" onclick="punchOut()">Punch Out</button>
                     <script>
