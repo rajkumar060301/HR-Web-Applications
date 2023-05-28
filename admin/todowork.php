@@ -14,6 +14,7 @@ $webtracker = $webtrackerhour.":".$webtrackerminute;
 
 date_default_timezone_set("Asia/Calcutta");
 $time = date('h:i:s');
+
 // before fetch date and id of team member from todowork table
 $currentDate = date("Y/m/d");
 $punchout = '00:00:00';
