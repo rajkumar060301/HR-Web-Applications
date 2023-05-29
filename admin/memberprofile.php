@@ -588,13 +588,7 @@ echo '<p class="text-muted text-center">'.$row['emptype'].'</p>';
         </select>
     
       </div>
-      <!-- <div class="input-group date"  style="margin-top:5px">
-        <input type="text" class="form-control" name="webtracker" id="date" placeholder="Web tracking time" onfocus="(this.type='time')" required>
-        <span class="input-group-append">
-          <span class="input-group-text bg-light d-block">
-          </span>
-        </span>
-      </div> -->
+
             <button type="submit" name='submit' > SUBMIT</button>
 
             </form>
