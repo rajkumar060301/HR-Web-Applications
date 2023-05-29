@@ -28,3 +28,29 @@ function performAction() {
 // Attach the click event listener to the button
 var button = document.getElementById('your-button-id');
 button.addEventListener('click', checkButtonClick); 
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Button Click Once Per Day</title>
+    <script>
+        function handleClick() {
+            var clicked = localStorage.getItem('buttonClicked');
+
+            if (clicked) {
+                // Button already clicked
+                alert('Button already clicked today.');
+            } else {
+                // Button clicked for the first time today
+                localStorage.setItem('buttonClicked', 'true');
+                window.location.href = 'raj.php'; // Replace 'raj.php' with the desired URL to open
+            }
+        }
+    </script>
+</head>
+<body>
+    <button onclick="handleClick()">Click Me</button>
+</body>
+</html>

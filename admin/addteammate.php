@@ -427,7 +427,7 @@
     <div class="float-right d-none d-sm-block">
       <b>Version</b> 3.2.0
     </div>
-    <strong>Copyright &copy; 2023 <a href="https://adminlte.io">Raj Kumar</a>.</strong> Webstep Solutions.
+    <strong>Copyright &copy; 2023 <a href="https://taracoder.blogspot.com/">Raj Kumar</a>.</strong> Webstep Solutions.
   </footer>
 
   <!-- Control Sidebar -->

@@ -4,7 +4,7 @@ include "config/config.php";
 $iD =  $_SESSION['teamID'];
 $punchout = $_POST['punchout'];
 $upworkhour=$_POST['upworkhour'];
-$upworkminute=$_POST['upworkminute'];
+$upworkminute=$_POST['upworkminute']; 
 $webtrackerhour=$_POST['webtrackerhour'];
 $webtrackerminute=$_POST['webtrackerminute'];
 
@@ -12,19 +12,19 @@ $task = $_POST['task'];
 $upwork = $upworkhour.":".$upworkminute;
 $webtracker = $webtrackerhour.":".$webtrackerminute;
 
-date_default_timezone_set("Asia/Calcutta");
+// date_default_timezone_set("Asia/Calcutta");
 $time = date('h:i:s');
 
 // before fetch date and id of team member from todowork table
-$currentDate = date("Y/m/d");
+$currentDate= date("Y/m/d");
 $punchout = '00:00:00';
-$read_todowork = " SELECT * FROM todowork where `id`='$iD' AND `date`='$currentDate' AND `punchout`='$punchout' ";
+$read_todowork = " SELECT * FROM todowork where `userid`='$iD' AND `date`='$currentDate' AND `punchout`='$punchout' ";
 
 $data_todo = mysqli_query($myConnection, $read_todowork);
 
 if(mysqli_num_rows($data_todo)>0){
   $row_data = mysqli_fetch_array($data_todo);
-  $update = "UPDATE todowork SET `punchout`='$time' ,`task`='$task',`upwork`='$upwork',`webtracker`='$webtracker' WHERE id=".$iD;
+  $update = "UPDATE todowork SET `punchout`='$time' ,`task`='$task',`upwork`='$upwork',`webtracker`='$webtracker' WHERE `userid`='$iD' AND `date`='$currentDate'";
 
   if(mysqli_query($myConnection,$update)){
     echo "<script>alert('Today task sumbmitted succussfully')</script>";
@@ -39,7 +39,7 @@ if(mysqli_num_rows($data_todo)>0){
 
 } else {
 
-  echo "<script>alert('Task already submitted today')</script>";
+  // echo "<script>alert('Task already submitted today')</script>";
   echo "<script>location.href='memberprofile.php'</script>";
 
 }

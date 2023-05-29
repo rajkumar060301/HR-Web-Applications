@@ -8,7 +8,7 @@ include "config/config.php";
 // echo $iD;
 // before fetch date and id of team member from todowork table
 $currentDate = date("Y/m/d");
-$read_todowork = " SELECT * FROM todowork where `id`='$iD' AND `date`='$currentDate' ";
+$read_todowork = " SELECT * FROM todowork where `userid`='$iD' AND `date`='$currentDate'";
 
 $data_todo = mysqli_query($myConnection, $read_todowork);
 
@@ -39,7 +39,7 @@ echo "<script>location.href='memberprofile.php'</script>";
   $date = date("Y/m/d");
   $time = date('h:i:s');
 
-  $inset_query = "INSERT INTO todowork(`id`,`fname`,`date`,`punchin`) values('$iD','$fname','$date','$time')";
+  $inset_query = "INSERT INTO todowork(`userid`,`fname`,`date`,`punchin`) values('$iD','$fname','$date','$time')";
 
   if (mysqli_query($myConnection, $inset_query)) {
     echo "<script>alert('Punch in successfully')</script>";

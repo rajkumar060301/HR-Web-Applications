@@ -180,7 +180,7 @@ $row_data = mysqli_fetch_array($data_register);
     <div class="float-right d-none d-sm-block">
       <b>Version </b> 3.2.0
     </div>
-    <strong>Copyright &copy; 2023 <a href="https://adminlte.io">Raj Kumar</a>.</strong> Webstep Solutions.
+    <strong>Copyright &copy; 2023 <a href="https://taracoder.blogspot.com/">Raj Kumar</a>.</strong> Webstep Solutions.
   </footer>
 <!-- jQuery -->
 <script src="plugins/jquery/jquery.min.js"></script>

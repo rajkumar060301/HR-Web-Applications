@@ -525,7 +525,7 @@ echo '<p class="text-muted text-center">'.$row['emptype'].'</p>';
                 class="list-group-item d-flex align-items-center ps-0 pe-3 py-1 rounded-0 border-0 bg-transparent">
                 <div class="form-check">
                   <input  class="form-check-input me-0" type="checkbox" name="punchout" id="punchout1"
-                    aria-label="..." />
+                    aria-label="..." required/>
                 </div>
               </li>
               <li
@@ -537,7 +537,7 @@ echo '<p class="text-muted text-center">'.$row['emptype'].'</p>';
             <div class="d-flex flex-row align-items-center">
 
                     <input type="text" class="form-control form-control-lg" id="exampleFormControlInput1"
-                      name="task" placeholder="Add new task ">
+                      name="task" placeholder="Add new task " required>
                     <a href="#!" data-mdb-toggle="tooltip" title="Set due date">
                     </a>
 
@@ -546,20 +546,20 @@ echo '<p class="text-muted text-center">'.$row['emptype'].'</p>';
       <div class="input-group date"  style="margin-top:5px">
       <p class="btn btn-primary">Upwork time</p>
         <label for="hour">Hour:</label>
-        <select name="upworkhour" id="hour" style="width: 100px;height :35px ">
+        <select name="upworkhour" id="hour" style="width: 100px;height :35px " required>
             <?php
             for ($i = 1; $i <= 24; $i++) {
-                echo "<option value='$i'>$i</option>";
+                echo "<option value='$i' required >$i</option>";
             }
             ?>
         </select>
 
         <label for="minute">Minute:</label>
-        <select name="upworkminute" id="minute" style="width: 100px;height :35px ">
+        <select name="upworkminute" id="minute" style="width: 100px;height :35px " required>
             <?php
             for ($i = 0; $i <= 59; $i++) {
                 $formattedMinute = sprintf("%02d", $i); // Pad single digit minutes with leading zero
-                echo "<option value='$i'>$formattedMinute</option>";
+                echo "<option value='$i' required>$formattedMinute</option>";
             }
             ?>
         </select>
@@ -568,21 +568,21 @@ echo '<p class="text-muted text-center">'.$row['emptype'].'</p>';
       <div class="input-group date"  style="margin-top:5px">
       <p class="btn btn-primary">Webtracker time</p>
         <label for="hour">Hour:</label>
-        <select name="webtrackerhour" id="hour" style="width: 100px;height :35px ">
+        <select name="webtrackerhour" id="hour" style="width: 100px;height :35px " required>
             <?php
             for ($i = 1; $i <= 24; $i++) {
-                echo "<option value='$i'>$i</option>";
+                echo "<option value='$i' required>$i</option>";
             }
             ?>
         </select>
 
         <label for="minute">Minute:</label>
-        <select name="webtrackerminute" id="minute" style="width: 100px;height :35px ">
+        <select name="webtrackerminute" id="minute" style="width: 100px;height :35px " required>
 
             <?php
             for ($i = 0; $i <= 59; $i++) {
                 $formattedMinute = sprintf("%02d", $i); // Pad single digit minutes with leading zero
-                echo "<option value='$i'>$formattedMinute</option>";
+                echo "<option value='$i' required>$formattedMinute</option>";
             }
             ?>
         </select>
@@ -612,7 +612,7 @@ echo '<p class="text-muted text-center">'.$row['emptype'].'</p>';
     <div class="float-right d-none d-sm-block">
       <b>Version </b> 3.2.0
     </div>
-    <strong>Copyright &copy; 2023 <a href="https://adminlte.io">Raj Kumar</a>.</strong> Webstep Solutions.
+    <strong>Copyright &copy; 2023 <a href="https://taracoder.blogspot.com/">Raj Kumar</a>.</strong> Webstep Solutions.
   </footer>
 
   <!-- Control Sidebar -->
