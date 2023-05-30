@@ -4,14 +4,22 @@ session_start();
 
  include "config/config.php";
 
-$currentDate = date("Y/m/d");
+$time = date('h:i:s');
+$punchin = '00:00:00';
+$lunchin = '00:00:00';
+$lunchout = '00:00:00';
+
+$currentDate = date("Y-m-d");
+
 $read_todowork = " SELECT * FROM todowork where `userid`='$iD' AND `date`='$currentDate'";
 $data_todo = mysqli_query($myConnection, $read_todowork);
 
+
+$read_query = "SELECT * from add_teammates where `id` = '$iD' ";
 $data = mysqli_query($myConnection, $read_query);
 
 if(mysqli_num_rows($data)>0){
-
+ 
 $row = mysqli_fetch_array($data);
 
 
@@ -512,12 +520,13 @@ echo '<p class="text-muted text-center">'.$row['emptype'].'</p>';
 <?php 
 if(mysqli_num_rows($data_todo)>0){
   $row_data = mysqli_fetch_array($data_todo);
-  if($row_data['lunchin']==$currentDate){
+
+  if($row_data['lunchin']!=$lunchin){
     ?>
-    <a href="#"><button type="button" class="btn btn-primary" >Lunch In</button></a>
+   <button type="button" class="btn btn-primary" >Lunch In</button>
     <?php
   }else{
-    ?>
+    ?>352
     <a href="lunchin.php"><button type="button" class="btn btn-primary" onclick="lunchinTime();">Lunch In</button></a>
     <?php
   }
@@ -527,9 +536,23 @@ if(mysqli_num_rows($data_todo)>0){
   <?php
 }
 ?>
-                    
+<!-- <?php
+    if($row_data['lunchout']!=$lunchout)
+    {
+      ?>
+         <button type="button" class="btn btn-primary" >Lunch In</button>
+         <?php
 
-                    <a href="lunchout.php"><button type="button" class="btn btn-primary" >Lunch Out</button></a>
+    }
+    else{
+      ?>
+          <a href="lunchout.php"><button type="button" class="btn btn-primary" >Lunch Out</button></a>
+<?php
+
+    }
+?> -->
+          <a href="lunchout.php"><button type="button" class="btn btn-primary" >Lunch Out</button></a>
+
 
 
 
