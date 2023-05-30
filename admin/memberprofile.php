@@ -8,12 +8,21 @@ $time = date('h:i:s');
 $punchin = '00:00:00';
 $lunchin = '00:00:00';
 $lunchout = '00:00:00';
+$punchout = '00:00:00';
 
 $currentDate = date("Y-m-d");
 
 $read_todowork = " SELECT * FROM todowork where `userid`='$iD' AND `date`='$currentDate'";
 $data_todo = mysqli_query($myConnection, $read_todowork);
-
+if(mysqli_num_rows($data_todo)>0){
+  $row_data = mysqli_fetch_array($data_todo);
+}else{
+  ?>
+  <!-- <a href="lunchin.php"><button type="button" class="btn btn-primary" onclick="lunchinTime();">Lunch In</button></a> -->
+  <?php
+}
+?>
+<?php
 
 $read_query = "SELECT * from add_teammates where `id` = '$iD' ";
 $data = mysqli_query($myConnection, $read_query);
@@ -49,13 +58,13 @@ $row = mysqli_fetch_array($data);
     <!-- Left navbar links -->
     <ul class="navbar-nav">
       <li class="nav-item">
-        <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+        <a class="nav-link" data-widget="pushmenu" href="javascript:void(0)" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
         <a href="./memberprofile.php" class="nav-link">Home</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="#" class="nav-link">Contact</a>
+        <a href="javascript:void(0)" class="nav-link">Contact</a>
       </li>
     </ul>
 
@@ -63,7 +72,7 @@ $row = mysqli_fetch_array($data);
     <ul class="navbar-nav ml-auto">
       <!-- Navbar Search -->
       <li class="nav-item">
-        <a class="nav-link" data-widget="navbar-search" href="#" role="button">
+        <a class="nav-link" data-widget="navbar-search" href="javascript:void(0)" role="button">
           <i class="fas fa-search"></i>
         </a>
         <div class="navbar-search-block">
@@ -85,12 +94,12 @@ $row = mysqli_fetch_array($data);
 
       <!-- Messages Dropdown Menu -->
       <li class="nav-item dropdown">
-        <a class="nav-link" data-toggle="dropdown" href="#">
+        <a class="nav-link" data-toggle="dropdown" href="javascript:void(0)">
           <i class="far fa-comments"></i>
           <span class="badge badge-danger navbar-badge">3</span>
         </a>
         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-          <a href="#" class="dropdown-item">
+          <a href="javascript:void(0)" class="dropdown-item">
             <!-- Message Start -->
             <div class="media">
               <img src="../../dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
@@ -106,7 +115,7 @@ $row = mysqli_fetch_array($data);
             <!-- Message End -->
           </a>
           <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
+          <a href="javascript:void(0)" class="dropdown-item">
             <!-- Message Start -->
             <div class="media">
               <img src="../../dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
@@ -122,7 +131,7 @@ $row = mysqli_fetch_array($data);
             <!-- Message End -->
           </a>
           <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
+          <a href="javascript:void(0)" class="dropdown-item">
             <!-- Message Start -->
             <div class="media">
               <img src="../../dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
@@ -138,45 +147,45 @@ $row = mysqli_fetch_array($data);
             <!-- Message End -->
           </a>
           <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
+          <a href="javascript:void(0)" class="dropdown-item dropdown-footer">See All Messages</a>
         </div>
       </li>
       <!-- Notifications Dropdown Menu -->
       <li class="nav-item dropdown">
-        <a class="nav-link" data-toggle="dropdown" href="#">
+        <a class="nav-link" data-toggle="dropdown" href="javascript:void(0)">
           <i class="far fa-bell"></i>
           <span class="badge badge-warning navbar-badge">15</span>
         </a>
         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
           <span class="dropdown-item dropdown-header">15 Notifications</span>
           <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
+          <a href="javascript:void(0)" class="dropdown-item">
             <i class="fas fa-envelope mr-2"></i> 4 new messages
             <span class="float-right text-muted text-sm">3 mins</span>
           </a>
           <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
+          <a href="javascript:void(0)" class="dropdown-item">
             <i class="fas fa-users mr-2"></i> 8 friend requests
             <span class="float-right text-muted text-sm">12 hours</span>
           </a>
           <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
+          <a href="javascript:void(0)" class="dropdown-item">
             <i class="fas fa-file mr-2"></i> 3 new reports
             <span class="float-right text-muted text-sm">2 days</span>
           </a>
           <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
+          <a href="javascript:void(0)" class="dropdown-item dropdown-footer">See All Notifications</a>
         </div>
       </li>
       <li class="nav-item">
-        <a class="nav-link" data-widget="fullscreen" href="#" role="button">
+        <a class="nav-link" data-widget="fullscreen" href="javascript:void(0)" role="button">
           <i class="fas fa-expand-arrows-alt"></i>
         </a>
 
 
       </li>
       <li class="nav-item">
-        <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
+        <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="javascript:void(0)" role="button">
           <i class="fas fa-th-large"></i>
         </a>
       </li>
@@ -197,7 +206,7 @@ $row = mysqli_fetch_array($data);
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
               <li class="breadcrumb-item active">User Profile</li>
             </ol>
           </div>
@@ -297,8 +306,8 @@ echo '<p class="text-muted text-center">'.$row['emptype'].'</p>';
 
                         ?>
                         <span class="username">
-                          <a href="#"><?php echo $row['fname'];?></a>
-                          <a href="#" class="float-right btn-tool"><i class="fas fa-times"></i></a>
+                          <a href="javascript:void(0)"><?php echo $row['fname'];?></a>
+                          <a href="javascript:void(0)" class="float-right btn-tool"><i class="fas fa-times"></i></a>
                         </span>
                         <span class="description">Shared publicly - 7:30 PM today</span>
                       </div>
@@ -480,7 +489,7 @@ echo '<p class="text-muted text-center">'.$row['emptype'].'</p>';
         <div class="card" id="list1" style="border-radius: .75rem; background-color: #eff1f2;">
 
         <!-- To do from start input  -->
-         <form action="todowork.php" method="post">
+         <!-- <form action="todowork.php" method="post"> -->
 
 
           <div class="card-body py-4 px-4 px-md-5">
@@ -494,155 +503,172 @@ echo '<p class="text-muted text-center">'.$row['emptype'].'</p>';
             <div class="pb-2">
               <div class="card">
                 <div class="card-body">
-                <a href="punchin.php?id='.$row['id'].'"><button type="button" class="btn btn-primary"  id="punchin" name="punchin" onclick="myFunction()" >Punch In</button></a>
-
-                    <button type="button" id="punchouting" class="btn btn-primary" onclick="punchOut()">Punch Out</button>
-                    <script>
-                function punchOut() {
-
-                  var today = new Date();
-                  var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
-
-                  var today = new Date();
-                  var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-                  const btn = document.getElementById('punchouting');
-
-                  btn.style.backgroundColor = 'green';
-
-                  document.getElementById("punchout").innerHTML = date+" time "+time;
-                  var checkbox = document.getElementById("punchout1");
-                  checkbox.value = time;
-
-                    }
-
-                </script>
-
-<?php 
-if(mysqli_num_rows($data_todo)>0){
-  $row_data = mysqli_fetch_array($data_todo);
-
-  if($row_data['lunchin']!=$lunchin){
-    ?>
-   <button type="button" class="btn btn-primary" >Lunch In</button>
-    <?php
-  }else{
-    ?>352
-    <a href="lunchin.php"><button type="button" class="btn btn-primary" onclick="lunchinTime();">Lunch In</button></a>
-    <?php
-  }
-}else{
-  ?>
-  <a href="lunchin.php"><button type="button" class="btn btn-primary" onclick="lunchinTime();">Lunch In</button></a>
-  <?php
-}
-?>
-<!-- <?php
-    if($row_data['lunchout']!=$lunchout)
-    {
-      ?>
-         <button type="button" class="btn btn-primary" >Lunch In</button>
-         <?php
-
-    }
-    else{
-      ?>
-          <a href="lunchout.php"><button type="button" class="btn btn-primary" >Lunch Out</button></a>
-<?php
-
-    }
-?> -->
-          <a href="lunchout.php"><button type="button" class="btn btn-primary" >Lunch Out</button></a>
+                <?php 
+                if(mysqli_num_rows($data_todo)>0){ 
+                              if($row_data['punchin']== $punchin){ ?>
+                                <a href="punchin.php?id='.$row['id'].'"><button type="button" class="btn btn-primary"  id="punchin" name="punchin" onclick="myFunction()" >Punch In</button></a>
+                                <?php 
+                              }else{
+                                ?>
+                                <a href="javascript:void(0)"><button type="button" class="btn btn-primary"  id="punchin" name="punchin" >Punch In</button></a>
+                                <?php
+                                } 
+                                ?>
+                              <?php
+                              if($row_data['punchout']!= $lunchout ){
+                                ?>
+                                    <button type="button" class="btn btn-primary" >Punch Out</button>
+                                    <?php
 
 
+                              }
+                              else{
+                                ?>
+                                  <button type="button" id="punchouting" class="btn btn-primary" onclick="punchOut();">Punch Out</button>
+                                  <?php
 
+                              }
+                            
+        
+                            if($row_data['lunchin']!=$lunchin){
+                              ?>
+                            <button type="button" class="btn btn-primary" >Lunch In</button>
+                              <?php
+                            }else{
+                              ?>
+                              <a href="lunchin.php"><button type="button" class="btn btn-primary" onclick="lunchinTime();">Lunch In</button></a>
+                              <?php
+                            }
 
+                if($row_data['lunchout']!=$lunchout)
+                {
+                  ?>
+                    <button type="button" class="btn btn-primary" >Lunch Out</button>
+                    <?php
+                }
+                else{
+                  ?>
+                      <a href="lunchout.php"><button type="button" class="btn btn-primary" >Lunch Out</button></a>
+            <?php
+
+                }
+            }else{
+              ?>
+
+              <a href="punchin.php?id='.$row['id'].'"><button type="button" class="btn btn-primary"  id="punchin" name="punchin" onclick="myFunction()" >Punch In</button></a>
+              <a href="lunchin.php"><button type="button" class="btn btn-primary" onclick="lunchinTime();">Lunch In</button></a>
+              <a href="lunchout.php"><button type="button" class="btn btn-primary" >Lunch Out</button></a>
+              <button type="button" id="punchouting" class="btn btn-primary" onclick="punchOut()">Punch Out</button>
+              <?php
+            }
+            ?>
+          <!-- <a href="lunchout.php"><button type="button" class="btn btn-primary" >Lunch Out</button></a> -->
 
                 </div>
               </div>
             </div>
+            <script>
+              function punchOut(){
+                var getform = document.getElementById('form');
+                var showing = document.getElementById('showdiv').innerHTML = getform;
+                console.log(showing);
+
+              }
+
+            </script>
+
+            <?php if(mysqli_num_rows($data_todo)>0){ ?>
+            
+          <form id='form' action="todowork.php" method="post" <?php if( $row_data['lunchout']!=$punchout && $row_data['task']=='') { echo "style='display:block'"; } else {  echo "style='display:none'";  } ?>>
+
+<ul class="list-group list-group-horizontal rounded-0">
+  <li
+    class="list-group-item d-flex align-items-center ps-0 pe-3 py-1 rounded-0 border-0 bg-transparent">
+    <div class="form-check">
+      <input  class="form-check-input me-0" type="checkbox" name="punchout" id="punchout1"
+        aria-label="..." required/>
+    </div>
+  </li>
+  <li
+    class="list-group-item px-3 py-1 d-flex align-items-center flex-grow-1 border-0 bg-transparent">
+    <p class="lead fw-normal mb-0" id='punchout'>Punch out time</p>
+  </li>
+
+</ul>
+<div class="d-flex flex-row align-items-center">
+
+        <input type="text" class="form-control form-control-lg" id="exampleFormControlInput1"
+          name="task" placeholder="Add new task " required>
+        <a href="#!" data-mdb-toggle="tooltip" title="Set due date">
+        </a>
+
+      </div>
+
+<div class="input-group date"  style="margin-top:5px">
+<p class="btn btn-primary">Upwork time</p>
+<label for="hour">Hour:</label>
+<select name="upworkhour" id="hour" style="width: 100px;height :35px " required>
+<?php
+for ($i = 1; $i <= 24; $i++) {
+    echo "<option value='$i' required >$i</option>";
+}
+?>
+</select>
+
+<label for="minute">Minute:</label>
+<select name="upworkminute" id="minute" style="width: 100px;height :35px " required>
+<?php
+for ($i = 0; $i <= 59; $i++) {
+    $formattedMinute = sprintf("%02d", $i); // Pad single digit minutes with leading zero
+    echo "<option value='$i' required>$formattedMinute</option>";
+}
+?>
+</select>
+
+</div>
+<div class="input-group date"  style="margin-top:5px">
+<p class="btn btn-primary">Webtracker time</p>
+<label for="hour">Hour:</label>
+<select name="webtrackerhour" id="hour" style="width: 100px;height :35px " required>
+<?php
+for ($i = 1; $i <= 24; $i++) {
+    echo "<option value='$i' required>$i</option>";
+}
+?>
+</select>
+
+<label for="minute">Minute:</label>
+<select name="webtrackerminute" id="minute" style="width: 100px;height :35px " required>
+
+<?php
+for ($i = 0; $i <= 59; $i++) {
+    $formattedMinute = sprintf("%02d", $i); // Pad single digit minutes with leading zero
+    echo "<option value='$i' required>$formattedMinute</option>";
+}
+?>
+</select>
+
+</div>
+
+<button type='submit' name='submit'>SUBMIT</button>
+
+
+</form>
+<?php } ?>
+
+
+      
 
             <hr class="my-4">
-<!--            <form action="todowork.php" method="post">-->
-
-            <ul class="list-group list-group-horizontal rounded-0">
-              <li
-                class="list-group-item d-flex align-items-center ps-0 pe-3 py-1 rounded-0 border-0 bg-transparent">
-                <div class="form-check">
-                  <input  class="form-check-input me-0" type="checkbox" name="punchout" id="punchout1"
-                    aria-label="..." required/>
-                </div>
-              </li>
-              <li
-                class="list-group-item px-3 py-1 d-flex align-items-center flex-grow-1 border-0 bg-transparent">
-                <p class="lead fw-normal mb-0" id='punchout'>Punch out time</p>
-              </li>
-
-            </ul>
-            <div class="d-flex flex-row align-items-center">
-
-                    <input type="text" class="form-control form-control-lg" id="exampleFormControlInput1"
-                      name="task" placeholder="Add new task " required>
-                    <a href="#!" data-mdb-toggle="tooltip" title="Set due date">
-                    </a>
-
-                  </div>
-
-      <div class="input-group date"  style="margin-top:5px">
-      <p class="btn btn-primary">Upwork time</p>
-        <label for="hour">Hour:</label>
-        <select name="upworkhour" id="hour" style="width: 100px;height :35px " required>
-            <?php
-            for ($i = 1; $i <= 24; $i++) {
-                echo "<option value='$i' required >$i</option>";
-            }
-            ?>
-        </select>
-
-        <label for="minute">Minute:</label>
-        <select name="upworkminute" id="minute" style="width: 100px;height :35px " required>
-            <?php
-            for ($i = 0; $i <= 59; $i++) {
-                $formattedMinute = sprintf("%02d", $i); // Pad single digit minutes with leading zero
-                echo "<option value='$i' required>$formattedMinute</option>";
-            }
-            ?>
-        </select>
-    
-      </div>
-      <div class="input-group date"  style="margin-top:5px">
-      <p class="btn btn-primary">Webtracker time</p>
-        <label for="hour">Hour:</label>
-        <select name="webtrackerhour" id="hour" style="width: 100px;height :35px " required>
-            <?php
-            for ($i = 1; $i <= 24; $i++) {
-                echo "<option value='$i' required>$i</option>";
-            }
-            ?>
-        </select>
-
-        <label for="minute">Minute:</label>
-        <select name="webtrackerminute" id="minute" style="width: 100px;height :35px " required>
-
-            <?php
-            for ($i = 0; $i <= 59; $i++) {
-                $formattedMinute = sprintf("%02d", $i); // Pad single digit minutes with leading zero
-                echo "<option value='$i' required>$formattedMinute</option>";
-            }
-            ?>
-        </select>
-    
-      </div>
-
-            <button type="submit" name='submit' > SUBMIT</button>
-
-            </form>
+            <div id="showdiv"> </div>
+ 
           </div>
         </div>
       </div>
     </div>
   </div>
 </section>
-
+ 
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
