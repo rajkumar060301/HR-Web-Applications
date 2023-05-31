@@ -184,7 +184,7 @@
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashboard
-                <i class="right fas fa-angle-left"></i>
+                <!-- <i class="right fas fa-angle-left"></i> -->
               </p>
             </a>
    
@@ -197,7 +197,7 @@
               <i class="nav-icon fas fa-edit"></i>
               <p>
                 Teams
-                <!-- <i class="fas fa-angle-left right"></i> -->
+                <i class="fas fa-angle-left right"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">

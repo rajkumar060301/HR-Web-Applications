@@ -289,18 +289,20 @@
                           Phone Number
                       </th>
                       <th >
-
+                        Time report
                       </th>
                   </tr>
               </thead>
 
   <?php
+
 include "config/config.php";
 $read_query = "SELECT * FROM add_teammates ";
 
 $data = mysqli_query($myConnection, $read_query);
 
 if(mysqli_num_rows($data)>0){
+
 
     while($row = mysqli_fetch_array($data)){
         echo"<tr>";
@@ -309,20 +311,30 @@ if(mysqli_num_rows($data)>0){
         echo "<td>".$row['fname']."</td>";
         echo "<td>".$row['pemail']."</td>";
         echo "<td>".$row['pnumber']."</td>";
+            // echo $_GET['id'];   
+            // if($_GET['id']==$row['id']){
+            //     echo "<td>".$_GET['total']."</td>";
 
-        echo '<td class="project-actions text-right">'.'<a class="btn btn-primary btn-sm" href="profile.php?id='.$row['id'].'" style="margin-right:5px">'.'<i class="fas fa-folder">'.'</i>'.
-            "View"
+            // }
+            // else{
+
+            // }  
+        // echo "<td>".$_GET['total']."</td>";
+
+
+        echo '<td class="project-actions text-right">'.'<a class="btn btn-primary btn-sm" href="timescore.php?id='.$row['id'].'" style="margin-right:5%">'.'<i class="fas fa-folder">'.'</i>'.
+            "Time report"
         .'</a>'.
-        '<a class="btn btn-info btn-sm" href="editteammates.php?id='.$row['id'].'" style="margin-right:5px">'.
-            '<i class="fas fa-pencil-alt">'.
-            '</i>'.
-            "Edit"
-        .'</a>'.
-        '<a class="btn btn-danger btn-sm" href="deleteteammember.php?id='.$row['id'].'" style="margin-right:5px">'.
-            '<i class="fas fa-trash">'.
-            '</i>'.
-            "Delete"
-        .'</a>'.
+        // '<a class="btn btn-info btn-sm" href="editteammates.php?id='.$row['id'].'" style="margin-right:5px">'.
+        //     '<i class="fas fa-pencil-alt">'.
+        //     '</i>'.
+        //     "Edit"
+        // .'</a>'.
+        // '<a class="btn btn-danger btn-sm" href="deleteteammember.php?id='.$row['id'].'" style="margin-right:5px">'.
+        //     '<i class="fas fa-trash">'.
+        //     '</i>'.
+        //     "Delete"
+        // .'</a>'.
     '</td>';
         
         echo "</tr>";
@@ -330,8 +342,6 @@ if(mysqli_num_rows($data)>0){
 } else {
     echo "Record Not found";
 }
-
-
 ?>
           </table>
 
