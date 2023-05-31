@@ -10,7 +10,7 @@ $read_query = "SELECT * from add_teammates where pemail='".$name."' and password
     $row = $result->fetch_assoc();
         $_SESSION['teamID']=$row['id'];
 
-               header("location:./memberprofile.php");
+               header("location:./teammemberprofile.php");
 
             }
             else{
