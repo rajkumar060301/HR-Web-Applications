@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>List Team</title>
+  <title>score report</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -184,7 +184,7 @@
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashboard
-                <i class="right fas fa-angle-left"></i>
+                <!-- <i class="right fas fa-angle-left"></i> -->
               </p>
             </a>
    
@@ -197,7 +197,7 @@
               <i class="nav-icon fas fa-edit"></i>
               <p>
                 Teams
-                <!-- <i class="fas fa-angle-left right"></i> -->
+                <i class="fas fa-angle-left right"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
@@ -239,7 +239,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>List team member</h1>
+            <h1>Welcome to score reporting page</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -273,22 +273,23 @@
         <table class="table table-striped projects">
               <thead>
                   <tr>
-                      <th style="width: 1%">
-                          ID
+                      <th style="width: 15%">
+                        Images
                       </th>
-                      <th style="width: 20%">
-                          Full name
+                      <th style="width: 15%">
+                        useeID
                       </th>
-                      <th style="width: 30%">
-                          DOB
+                      <th style="width: 15%">
+                         Full name
                       </th>
-                      <th>
-                           Date Of joining
+                      <th style="width: 15%">
+                          Email
                       </th>
-                      <th style="width: 8%" class="text-center">
-                          Employee Type
+                      <th style="width: 15%">
+                          Phone Number
                       </th>
-                      <th style="width: 20%">
+                      <th >
+
                       </th>
                   </tr>
               </thead>
@@ -303,11 +304,11 @@ if(mysqli_num_rows($data)>0){
 
     while($row = mysqli_fetch_array($data)){
         echo"<tr>";
+        echo "<td>"."<img class='profile-user-img img-fluid img-circle' src=".$row['image'].' width=60px height="60px">'."</td>";
         echo "<td>".$row['id']."</td>";
         echo "<td>".$row['fname']."</td>";
-        echo "<td>".$row['dob']."</td>";
-        echo "<td>".$row['dateofjoining']."</td>";
-        echo "<td>".$row['emptype']."</td>";
+        echo "<td>".$row['pemail']."</td>";
+        echo "<td>".$row['pnumber']."</td>";
 
         echo '<td class="project-actions text-right">'.'<a class="btn btn-primary btn-sm" href="profile.php?id='.$row['id'].'" style="margin-right:5px">'.'<i class="fas fa-folder">'.'</i>'.
             "View"

@@ -176,7 +176,7 @@
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashboard
-                <i class="right fas fa-angle-left"></i>
+                <!-- <i class="right fas fa-angle-left"></i> -->
               </p>
             </a>
    
@@ -206,9 +206,17 @@
                   <p>List Teammate</p>
                 </a>
               </li>
-
-             
         </ul>
+        <li class="nav-item">
+          <a href="report.php" class="nav-link">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-view-list" viewBox="0 0 16 16">
+                <path d="M3 4.5h10a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2zm0 1a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1H3zM1 2a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 0 1h-13A.5.5 0 0 1 1 2zm0 12a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 0 1h-13A.5.5 0 0 1 1 14z"/>
+              </svg>
+                <p>
+                  View Report
+                </p>
+            </a>
+          </li>
         
       </nav>
       <!-- /.sidebar-menu -->
@@ -236,45 +244,45 @@
     </section>
 
     <!-- Main content -->
-    <section class="content">
-    <?php
- $iD=$_GET['id'];
 
-include "config/config.php";
+                  <?php
+              $iD=$_GET['id'];
 
-$read_query = "SELECT * FROM add_teammates where id=".$iD;
+              include "config/config.php";
 
-$data = mysqli_query($myConnection, $read_query);
+              $read_query = "SELECT * FROM add_teammates where id=".$iD;
 
-if(mysqli_num_rows($data)>0){
+              $data = mysqli_query($myConnection, $read_query);
 
-$row = mysqli_fetch_array($data);
+              if(mysqli_num_rows($data)>0){
 
-        
-} else {
-    echo "Record Not found";
-}
+              $row = mysqli_fetch_array($data);
 
-?>
+                      
+              } else {
+                  echo "Record Not found";
+              }
 
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-md-3">
+              ?>
 
-            <!-- Profile Image -->
-            <div class="card card-primary card-outline">
-              <div class="card-body box-profile">
-                <div class="text-center">
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-md-3">
+
+                  <!-- Profile Image -->
+                  <div class="card card-primary card-outline">
+                    <div class="card-body box-profile">
+                      <div class="text-center">
                 <?php 
-            echo "<img class='profile-user-img img-fluid img-circle' src=".$row['image'].' width=128px height="128px">'; 
-            ?>
+                    echo "<img class='profile-user-img img-fluid img-circle' src=".$row['image'].' width=128px height="128px">'; 
+                    ?>
                 </div>
 
-<?php
-echo '<h3 class="profile-username text-center">'.$row['fname'].'</h3>';
-echo '<p class="text-muted text-center">'.$row['emptype'].'</p>';
+                <?php
+                echo '<h3 class="profile-username text-center">'.$row['fname'].'</h3>';
+                echo '<p class="text-muted text-center">'.$row['emptype'].'</p>';
 
-?>
+                ?>
 
               </div>
               <!-- /.card-body -->

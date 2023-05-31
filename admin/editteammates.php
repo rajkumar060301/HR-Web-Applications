@@ -217,7 +217,7 @@ $row = mysqli_fetch_array($data);
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashboard
-                <i class="right fas fa-angle-left"></i>
+                <!-- <i class="right fas fa-angle-left"></i> -->
               </p>
             </a>
    
@@ -247,9 +247,18 @@ $row = mysqli_fetch_array($data);
                   <p>List Teammate</p>
                 </a>
               </li>
-
-             
+         
         </ul>
+        <li class="nav-item">
+          <a href="report.php" class="nav-link">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-view-list" viewBox="0 0 16 16">
+                <path d="M3 4.5h10a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2zm0 1a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1H3zM1 2a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 0 1h-13A.5.5 0 0 1 1 2zm0 12a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 0 1h-13A.5.5 0 0 1 1 14z"/>
+              </svg>
+                <p>
+                  View Report
+                </p>
+            </a>
+          </li>
         
       </nav>
       <!-- /.sidebar-menu -->
@@ -264,7 +273,7 @@ $row = mysqli_fetch_array($data);
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Update Team member</h1>
+            <!-- <h1>Update Team member</h1> -->
           </div>
 
        
@@ -277,7 +286,7 @@ $row = mysqli_fetch_array($data);
  
   <div class="register-box" style="width:600px;margin-left: 350px">
   <div class="register-logo">
-    <a href="index2.html"><b>Team member record</b></a>
+    <a href="index2.html"><b>Update team member record</b></a>
   </div>
 
   <div class="card">
@@ -286,7 +295,7 @@ $row = mysqli_fetch_array($data);
 
       <?php echo '<form action="./updateteammates.php?id='.$row['id'].'" method="post" enctype="multipart/form-data">' ?>
         <div class="input-group mb-3">
-          <input type="text" class="form-control" name="fname" placeholder="<?php echo $row['fname']; ?>" required>
+          <input type="text" class="form-control" name="fname"  required value="<?php echo $row['fname']; ?>">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-user"></span>
@@ -295,7 +304,7 @@ $row = mysqli_fetch_array($data);
         </div>
 
         <div class="input-group date"  style="margin-top:5px">
-        <input type="text" class="form-control" name="dob" id="date" placeholder="<?php echo $row['dob']; ?>" onfocus="(this.type='date')" required>
+        <input type="text" class="form-control" name="dob" id="date" value="<?php echo $row['dob']; ?>" onfocus="(this.type='date')" required>
         <span class="input-group-append">
           <span class="input-group-text bg-light d-block">
             <!-- <i class="fa fa-calendar" id="date"></i> -->
@@ -304,7 +313,7 @@ $row = mysqli_fetch_array($data);
       </div>
 
         <div class="input-group date"  style="margin-top:10px">
-          <input type="text" class="form-control" name="doj" placeholder="<?php echo $row['dateofjoining']; ?>" onfocus="(this.type='date')" required>
+          <input type="text" class="form-control" name="doj" value="<?php echo $row['dateofjoining']; ?>" onfocus="(this.type='date')" required>
           <div class="input-group-append">
             <div class="input-group-text">
             </div>
@@ -313,7 +322,7 @@ $row = mysqli_fetch_array($data);
         <div class="input-group mb-3" style="margin-top:10px">
           
           <select name="emptype" class="form-control" required>
-          <option value="#" placeholder="Employee type"><?php echo $row['emptype']; ?></option>
+          <option value="#" value="Employee type"><?php echo $row['emptype']; ?></option>
  
           <option value="full time">full time</option>
             <option value="part time">part time</option>
@@ -325,7 +334,7 @@ $row = mysqli_fetch_array($data);
           </div>
         </div>
         <div class="input-group mb-3">
-          <input type="email" class="form-control" name="personalemail" placeholder="<?php echo $row['pemail']; ?>" required >
+          <input type="email" class="form-control" name="personalemail" value="<?php echo $row['pemail']; ?>" required >
           <div class="input-group-append">
             <div class="input-group-text">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope-at-fill" viewBox="0 0 16 16">
@@ -336,7 +345,7 @@ $row = mysqli_fetch_array($data);
           </div>
         </div>
         <div class="input-group mb-3">
-          <input type="email" class="form-control" name="officialemail" placeholder="<?php echo $row['oemail']; ?>" required>
+          <input type="email" class="form-control" name="officialemail" value="<?php echo $row['oemail']; ?>" required>
           <div class="input-group-append">
             <div class="input-group-text">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope-at-fill" viewBox="0 0 16 16">
@@ -348,35 +357,35 @@ $row = mysqli_fetch_array($data);
         </div>
 
         <div class="input-group mb-3">
-          <input type="text" class="form-control" name="adhar" placeholder="<?php echo $row['adhar']; ?>" required>
+          <input type="text" class="form-control" name="adhar" value="<?php echo $row['adhar']; ?>" required>
           <div class="input-group-append">
             <div class="input-group-text">
             </div>
           </div>
         </div>
         <div class="input-group mb-3">
-          <input type="file" class="form-control" name="academics" placeholder="<?php echo $row['academics']; ?>" >
+          <input type="file" class="form-control" name="academics" value="<?php echo $row['academics']; ?>" >
           <div class="input-group-append">
             <div class="input-group-text">
             </div>
           </div>
         </div>
         <div class="input-group mb-3">
-          <input type="text" class="form-control" name="paddress" placeholder="<?php echo $row['paddress']; ?>" required>
+          <input type="text" class="form-control" name="paddress" value="<?php echo $row['paddress']; ?>" required>
           <div class="input-group-append">
             <div class="input-group-text">
             </div>
           </div>
         </div>
         <div class="input-group mb-3">
-          <input type="text" class="form-control" name="caddress" placeholder="<?php echo $row['caddress']; ?>" required>
+          <input type="text" class="form-control" name="caddress" value="<?php echo $row['caddress']; ?>" required>
           <div class="input-group-append">
             <div class="input-group-text">
             </div>
           </div>
         </div>
         <div class="input-group mb-3">
-          <input type="text" class="form-control" name="phone" placeholder="<?php echo $row['pnumber']; ?>" required>
+          <input type="text" class="form-control" name="phone" value="<?php echo $row['pnumber']; ?>" required>
           <div class="input-group-append">
             <div class="input-group-text">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-telephone" viewBox="0 0 16 16">
@@ -385,7 +394,7 @@ $row = mysqli_fetch_array($data);
           </div>
         </div>
         <div class="input-group mb-3">
-          <input type="text" class="form-control" name="emergencynumber"  placeholder="<?php echo $row['anumber']; ?>" required>
+          <input type="text" class="form-control" name="emergencynumber"  value="<?php echo $row['anumber']; ?>" required>
           <div class="input-group-append">
             <div class="input-group-text">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-telephone" viewBox="0 0 16 16">
@@ -395,7 +404,7 @@ $row = mysqli_fetch_array($data);
         </div>
 
         <div class="input-group mb-3">
-          <input type="file" class="form-control" name="file" placeholder="<?php echo $row['image']; ?>">
+          <input type="file" class="form-control" name="file" value="<?php echo $row['image']; ?>">
           <div class="input-group-append">
             <div class="input-group-text">
             </div>
