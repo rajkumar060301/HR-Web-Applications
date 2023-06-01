@@ -1,3 +1,8 @@
+<?php
+// session_start();
+include ('config/config.php'); 
+
+    ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -288,7 +293,7 @@
                       <th style="width: 15%">
                           Phone Number
                       </th>
-                      <th >
+                      <th style="width: 15%" >
                         Time report
                       </th>
                   </tr>
@@ -296,7 +301,7 @@
 
   <?php
 
-include "config/config.php";
+// include "config/config.php";
 $read_query = "SELECT * FROM add_teammates ";
 
 $data = mysqli_query($myConnection, $read_query);
@@ -311,38 +316,27 @@ if(mysqli_num_rows($data)>0){
         echo "<td>".$row['fname']."</td>";
         echo "<td>".$row['pemail']."</td>";
         echo "<td>".$row['pnumber']."</td>";
-            // echo $_GET['id'];   
-            // if($_GET['id']==$row['id']){
-            //     echo "<td>".$_GET['total']."</td>";
 
-            // }
-            // else{
-
-            // }  
-        // echo "<td>".$_GET['total']."</td>";
-
-
-        echo '<td class="project-actions text-right">'.'<a class="btn btn-primary btn-sm" href="timescore.php?id='.$row['id'].'" style="margin-right:5%">'.'<i class="fas fa-folder">'.'</i>'.
-            "Time report"
+        echo '<td>'.
+        '<a class="btn btn-primary btn-sm" href="timescore.php?id='.$row['id'].'">'.'</i>'.
+        "Show report"
         .'</a>'.
-        // '<a class="btn btn-info btn-sm" href="editteammates.php?id='.$row['id'].'" style="margin-right:5px">'.
-        //     '<i class="fas fa-pencil-alt">'.
-        //     '</i>'.
-        //     "Edit"
-        // .'</a>'.
-        // '<a class="btn btn-danger btn-sm" href="deleteteammember.php?id='.$row['id'].'" style="margin-right:5px">'.
-        //     '<i class="fas fa-trash">'.
-        //     '</i>'.
-        //     "Delete"
-        // .'</a>'.
+
     '</td>';
+
         
         echo "</tr>";
     }
 } else {
     echo "Record Not found";
 }
+
+
+
 ?>
+
+
+
           </table>
 
         </div>
