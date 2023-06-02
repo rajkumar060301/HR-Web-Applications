@@ -28,19 +28,18 @@ if(mysqli_num_rows($data_todo)>0){
 
   if(mysqli_query($myConnection,$update)){
     echo "<script>alert('Today task sumbmitted succussfully')</script>";
-    echo "<script>location.href='memberprofile.php'</script>";
+    echo "<script>location.href='teammemberprofile.php'</script>";
 
   }
   else{
     echo "<script>alert('Task not addred')</script>";
-    echo "<script>location.href='memberprofile.php'</script>";
+    echo "<script>location.href='teammemberprofile.php'</script>";
 
   }
 
 } else {
 
-  // echo "<script>alert('Task already submitted today')</script>";
-  echo "<script>location.href='memberprofile.php'</script>";
+  echo "<script>location.href='teammemberprofile.php'</script>";
 
 }
 
