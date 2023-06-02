@@ -4,9 +4,7 @@ session_start();
 $iD=$_SESSION['teamID'];
 $id=$_GET['id'];
 include "config/config.php";
-// echo $id;
-// echo $iD;
-// before fetch date and id of team member from todowork table
+
 $currentDate = date("Y/m/d");
 $read_todowork = " SELECT * FROM todowork where `userid`='$iD' AND `date`='$currentDate'";
 
@@ -17,8 +15,7 @@ if(mysqli_num_rows($data_todo)>0){
 
 $row_data = mysqli_fetch_array($data_todo);
 
-// echo "<script>alert('Already punch in today')</script>";
-echo "<script>location.href='memberprofile.php'</script>";
+echo "<script>location.href='teammemberprofile.php'</script>";
 
 
 } else {
@@ -43,11 +40,11 @@ echo "<script>location.href='memberprofile.php'</script>";
 
   if (mysqli_query($myConnection, $inset_query)) {
     echo "<script>alert('Punch in successfully')</script>";
-    echo "<script>location.href='memberprofile.php'</script>";
+    echo "<script>location.href='teammemberprofile.php'</script>";
 
   } else {
     echo "<script>alert('Not punch in')</script>";
-    echo "<script>location.href='memberprofile.php'</script>";
+    echo "<script>location.href='teammemberprofile.php'</script>";
 
   }
 }
