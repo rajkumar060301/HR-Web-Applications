@@ -17,7 +17,7 @@ if(mysqli_num_rows($data_todo)>0){
   $row_data = mysqli_fetch_array($data_todo);
 
   echo "<script>alert('you are not lunch in today')</script>";
-  echo "<script>location.href='memberprofile.php'</script>";
+  echo "<script>location.href='teammemberprofile.php'</script>";
 }
 
 else {
@@ -33,11 +33,11 @@ if(mysqli_num_rows($data)>0){
 
   if (mysqli_query($myConnection, $update)) {
     echo "<script>alert('Lunch out is successfully')</script>";
-    echo "<script>location.href='memberprofile.php'</script>";
+    echo "<script>location.href='teammemberprofile.php'</script>";
 
   } else {
     echo "<script>alert('you are already logout today')</script>";
-    echo "<script>location.href='memberprofile.php'</script>";
+    echo "<script>location.href='teammemberprofile.php'</script>";
   }
 
 }
@@ -46,7 +46,7 @@ else {
 
 
   // echo "<script>alert('you are already logout today')</script>";
-  echo "<script>location.href='memberprofile.php'</script>";
+  echo "<script>location.href='teammemberprofile.php'</script>";
 
 }
 
