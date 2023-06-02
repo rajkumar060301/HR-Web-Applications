@@ -5,13 +5,13 @@ include ('config/config.php');
 if(isset($_POST['submit_btn'])){
   $start_date = $_POST['start'];
   $end_date = $_POST['end'];
-  $read_query = "SELECT  `userid`, `fname`, `date`, `punchin`, `punchout`,`lunchin`,`lunchout`, `task`, concat(timestampdiff(HOUR,`punchin`,`punchout`),':', timestampdiff(MINUTE,`punchin`,`punchout`)%60,':',
+  $read_query = "SELECT  `userid`, `fname`, `date`, `punchin`, `punchout`,`lunchin`,`lunchout`, `upwork_task`,`webtracker_task`, concat(timestampdiff(HOUR,`punchin`,`punchout`),':', timestampdiff(MINUTE,`punchin`,`punchout`)%60,':',
   timestampdiff(second,`punchin`, `punchout`)%60 ) as 'Worked_Time' FROM todowork where `userid`='$iD' AND `date`>= '$start_date' AND `date` <= '$end_date'";
   $data = mysqli_query($myConnection, $read_query);
 
 }
 else{
-  $read_query = "SELECT  `userid`, `fname`, `date`, `punchin`, `punchout`,`lunchin`,`lunchout`, `task`, concat(timestampdiff(HOUR,`punchin`,`punchout`),':', timestampdiff(MINUTE,`punchin`,`punchout`)%60,':',
+  $read_query = "SELECT  `userid`, `fname`, `date`, `punchin`, `punchout`,`lunchin`,`lunchout`, `upwork_task`,`webtracker_task`, concat(timestampdiff(HOUR,`punchin`,`punchout`),':', timestampdiff(MINUTE,`punchin`,`punchout`)%60,':',
   timestampdiff(second,`punchin`, `punchout`)%60 ) as 'Worked_Time' FROM todowork where `userid`='$iD'";
   $data = mysqli_query($myConnection, $read_query);
 
@@ -297,30 +297,35 @@ else{
                   <thead>
                   <tr>
 
-                      <th style="width: 10%">
+                      <th style="width: 5%">
                         useeID
                       </th>
-                      <th style="width: 10%">
+                      <th style="width: 7%">
                          Full name
                       </th>
-                      <th style="width: 10%">
+                      <th style="width: 7%">
                         Date
                       </th>
-                      <th style="width: 10%">
+                      <th style="width: 7%">
                           Punchin Time
                       </th>
-                      <th style="width: 10%">
+                      <th style="width: 7%">
                           Punchout Time
                       </th>
-                      <th style="width: 10%" >
+                      <th style="width: 7%" >
                         Lunchin Time
                       </th>
-                      <th style="width: 10%">
+                      <th style="width: 7%">
                         Lunchout Time
                       </th>
                       <th style="width: 10%">
-                        Complete Task
+                        Worked on Upwork
                       </th>
+                      </th>
+                      <th style="width: 10%">
+                        Worked on webtracker
+                      </th>
+
                       <th style="width: 10%">
                         Total work Time(P.D)
                       </th>
@@ -339,7 +344,8 @@ if(mysqli_num_rows($data)>0){
     echo "<td>".$row['punchout']."</td>";
     echo "<td>".$row['lunchin']."</td>";
     echo "<td>".$row['lunchout']."</td>";
-    echo "<td>".$row['task']."</td>";
+    echo "<td>".$row['upwork_task']."</td>";
+    echo "<td>".$row['webtracker_task']."</td>";
     echo "<td>".$row['Worked_Time']."</td>";
 
         echo "</tr>";
