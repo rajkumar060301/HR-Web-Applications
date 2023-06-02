@@ -2,27 +2,21 @@
 session_start();
 $iD = $_GET['id'];
 include ('config/config.php');
-
-$read_todowork = " SELECT timestampdiff(HOUR,`punchin`,`punchout`) as 'HOUR' , timestampdiff(MINUTE,`punchin`,`punchout`) as 'MINUTE',
-timestampdiff(second,`punchin`, `punchout`) as'SECOND' FROM todowork where `userid`='$iD'";
-$data_todo = mysqli_query($myConnection, $read_todowork);
-
-if(mysqli_num_rows($data_todo)>0){
-  $row_data = mysqli_fetch_array($data_todo);
-  // echo "<br>";
-  $total_time = $row_data['HOUR'].':'.$row_data['MINUTE'].':'.$row_data['SECOND'];
-  echo $row_data['HOUR'];
-  // $total_day = $row_data['day'];
-  // $total_hour =  $row_data['HOUR'] + floor($row_data['MINUTE']/60);
-  // $total_minute =  $row_data['MINUTE']%60 + floor($row_data['SECOND']/3600);
-  // $total_second =  $row_data['SECOND']%3600;
-  // $total_time = $total_hour.":".$total_minute.":"+$total_second;
+if(isset($_POST['submit_btn'])){
+  $start_date = $_POST['start'];
+  $end_date = $_POST['end'];
+  $read_query = "SELECT  `userid`, `fname`, `date`, `punchin`, `punchout`,`lunchin`,`lunchout`, `task`, concat(timestampdiff(HOUR,`punchin`,`punchout`),':', timestampdiff(MINUTE,`punchin`,`punchout`)%60,':',
+  timestampdiff(second,`punchin`, `punchout`)%60 ) as 'Worked_Time' FROM todowork where `userid`='$iD' AND `date`>= '$start_date' AND `date` <= '$end_date'";
+  $data = mysqli_query($myConnection, $read_query);
 
 }
 else{
-  echo "Kuchh nahi!";
+  $read_query = "SELECT  `userid`, `fname`, `date`, `punchin`, `punchout`,`lunchin`,`lunchout`, `task`, concat(timestampdiff(HOUR,`punchin`,`punchout`),':', timestampdiff(MINUTE,`punchin`,`punchout`)%60,':',
+  timestampdiff(second,`punchin`, `punchout`)%60 ) as 'Worked_Time' FROM todowork where `userid`='$iD'";
+  $data = mysqli_query($myConnection, $read_query);
 
 }
+
 
 ?>
 <!DOCTYPE html>
@@ -204,8 +198,7 @@ else{
       <nav class="mt-2">
         
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-          <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
+
           <li class="nav-item menu-open">
             <a href="index3.php" class="nav-link active">
               <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -284,16 +277,17 @@ else{
       <!-- Default box -->
       <div class="card">
         <div class="card-header">
-          <h3 class="card-title">Projects</h3>
+          <h3 class="card-title">Filter</h3>
+          <form method="post">
+          <input type="date" name="start" class="btn btn-tool">
 
-          <div class="card-tools">
-            <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
-              <i class="fas fa-minus"></i>
-            </button>
-            <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
-              <i class="fas fa-times"></i>
-            </button>
-          </div>
+            TO
+            <input type="date" name="end"  class="btn btn-tool">
+            <button type="submit" name='submit_btn' class="btn btn-tool"  title="Collapse">
+              Search
+            </button> 
+            </form>
+   
         </div>
         <div class="card-body p-0">
           
@@ -335,17 +329,9 @@ else{
 
   <?php
 
-// include "config/config.php";
-$read_query = "SELECT * FROM todowork where userid=$iD ";
-
-$data = mysqli_query($myConnection, $read_query);
-
 if(mysqli_num_rows($data)>0){
-
-
   while($row = mysqli_fetch_array($data)){
     echo"<tr>";
-    // echo "<td>"."<img class='profile-user-img img-fluid img-circle' src=".$row['image'].' width=60px height="60px">'."</td>";
     echo "<td>".$row['userid']."</td>";
     echo "<td>".$row['fname']."</td>";
     echo "<td>".$row['date']."</td>";
@@ -354,9 +340,7 @@ if(mysqli_num_rows($data)>0){
     echo "<td>".$row['lunchin']."</td>";
     echo "<td>".$row['lunchout']."</td>";
     echo "<td>".$row['task']."</td>";
-    echo "<td>".$total_time."</td>";
-
-
+    echo "<td>".$row['Worked_Time']."</td>";
 
         echo "</tr>";
     }
@@ -364,12 +348,7 @@ if(mysqli_num_rows($data)>0){
     echo "Record Not found";
 }
 
-
-
 ?>
-
-
-
           </table>
 
         </div>
