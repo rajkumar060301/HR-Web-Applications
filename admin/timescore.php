@@ -1,9 +1,30 @@
+<?php
+session_start();
+$iD = $_GET['id'];
+include ('config/config.php');
+if(isset($_POST['submit_btn'])){
+  $start_date = $_POST['start'];
+  $end_date = $_POST['end'];
+  $read_query = "SELECT  `userid`, `fname`, `date`, `punchin`, `punchout`,`lunchin`,`lunchout`, `upwork_task`,`webtracker_task`, concat(timestampdiff(HOUR,`punchin`,`punchout`),':', timestampdiff(MINUTE,`punchin`,`punchout`)%60,':',
+  timestampdiff(second,`punchin`, `punchout`)%60 ) as 'Worked_Time' FROM todowork where `userid`='$iD' AND `date`>= '$start_date' AND `date` <= '$end_date'";
+  $data = mysqli_query($myConnection, $read_query);
+
+}
+else{
+  $read_query = "SELECT  `userid`, `fname`, `date`, `punchin`, `punchout`,`lunchin`,`lunchout`, `upwork_task`,`webtracker_task`, concat(timestampdiff(HOUR,`punchin`,`punchout`),':', timestampdiff(MINUTE,`punchin`,`punchout`)%60,':',
+  timestampdiff(second,`punchin`, `punchout`)%60 ) as 'Worked_Time' FROM todowork where `userid`='$iD'";
+  $data = mysqli_query($myConnection, $read_query);
+
+}
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>List Team</title>
+  <title>score report</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -177,8 +198,7 @@
       <nav class="mt-2">
         
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-          <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
+
           <li class="nav-item menu-open">
             <a href="index3.php" class="nav-link active">
               <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -239,7 +259,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>List team member</h1>
+            <h1>Welcome to score reporting page</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -257,79 +277,82 @@
       <!-- Default box -->
       <div class="card">
         <div class="card-header">
-          <h3 class="card-title">Projects</h3>
+          <h3 class="card-title">Filter</h3>
+          <form method="post">
+          <input type="date" name="start" class="btn btn-tool">
 
-          <div class="card-tools">
-            <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
-              <i class="fas fa-minus"></i>
-            </button>
-            <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
-              <i class="fas fa-times"></i>
-            </button>
-          </div>
+            TO
+            <input type="date" name="end"  class="btn btn-tool">
+            <button type="submit" name='submit_btn' class="btn btn-tool"  title="Collapse">
+              Search
+            </button> 
+            </form>
+   
         </div>
         <div class="card-body p-0">
           
         <table class="table table-striped projects">
               <thead>
                   <tr>
-                      <th style="width: 1%">
-                          ID
+                  <thead>
+                  <tr>
+
+                      <th style="width: 5%">
+                        useeID
                       </th>
-                      <th style="width: 20%">
-                          Full name
+                      <th style="width: 7%">
+                         Full name
                       </th>
-                      <th style="width: 30%">
-                          DOB
+                      <th style="width: 7%">
+                        Date
                       </th>
-                      <th>
-                           Date Of joining
+                      <th style="width: 7%">
+                          Punchin Time
                       </th>
-                      <th style="width: 8%" class="text-center">
-                          Employee Type
+                      <th style="width: 7%">
+                          Punchout Time
                       </th>
-                      <th style="width: 20%">
+                      <th style="width: 7%" >
+                        Lunchin Time
+                      </th>
+                      <th style="width: 7%">
+                        Lunchout Time
+                      </th>
+                      <th style="width: 10%">
+                        Worked on Upwork
+                      </th>
+                      </th>
+                      <th style="width: 10%">
+                        Worked on webtracker
+                      </th>
+
+                      <th style="width: 10%">
+                        Total work Time(P.D)
                       </th>
                   </tr>
               </thead>
 
   <?php
-include "config/config.php";
-$read_query = "SELECT * FROM add_teammates ";
-
-$data = mysqli_query($myConnection, $read_query);
 
 if(mysqli_num_rows($data)>0){
+  while($row = mysqli_fetch_array($data)){
+    echo"<tr>";
+    echo "<td>".$row['userid']."</td>";
+    echo "<td>".$row['fname']."</td>";
+    echo "<td>".$row['date']."</td>";
+    echo "<td>".$row['punchin']."</td>";
+    echo "<td>".$row['punchout']."</td>";
+    echo "<td>".$row['lunchin']."</td>";
+    echo "<td>".$row['lunchout']."</td>";
+    echo "<td>".$row['upwork_task']."</td>";
+    echo "<td>".$row['webtracker_task']."</td>";
+    echo "<td>".$row['Worked_Time']."</td>";
 
-    while($row = mysqli_fetch_array($data)){
-        echo"<tr>";
-        echo "<td>".$row['id']."</td>";
-        echo "<td>".$row['fname']."</td>";
-        echo "<td>".$row['dob']."</td>";
-        echo "<td>".$row['dateofjoining']."</td>";
-        echo "<td>".$row['emptype']."</td>";
-
-        echo '<td class="project-actions text-right">'.'<a class="btn btn-primary btn-sm" href="profile.php?id='.$row['id'].'" style="margin-right:5px">'.'<i class="fas fa-folder">'.'</i>'.
-            "View"
-        .'</a>'.
-        '<a class="btn btn-info btn-sm" href="editteammates.php?id='.$row['id'].'" style="margin-right:5px">'.
-            '<i class="fas fa-pencil-alt">'.
-            '</i>'.
-            "Edit"
-        .'</a>'.
-        '<a class="btn btn-danger btn-sm" href="deleteteammember.php?id='.$row['id'].'" style="margin-right:5px">'.
-            '<i class="fas fa-trash">'.
-            '</i>'.
-            "Delete"
-        .'</a>'.
-    '</td>';
-        
         echo "</tr>";
     }
 } else {
     echo "Record Not found";
 }
-
 
 ?>
           </table>

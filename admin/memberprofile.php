@@ -232,11 +232,11 @@ $row = mysqli_fetch_array($data);
             ?>
                 </div>
 
-<?php
-echo '<h3 class="profile-username text-center">'.$row['fname'].'</h3>';
-echo '<p class="text-muted text-center">'.$row['emptype'].'</p>';
+                <?php
+                echo '<h3 class="profile-username text-center">'.$row['fname'].'</h3>';
+                echo '<p class="text-muted text-center">'.$row['emptype'].'</p>';
 
-?>
+                ?>
 
               </div>
               <!-- /.card-body -->

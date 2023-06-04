@@ -1,9 +1,14 @@
+<?php
+// session_start();
+include ('config/config.php'); 
+
+    ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>List Team</title>
+  <title>score report</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -239,7 +244,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>List team member</h1>
+            <h1>Welcome to score reporting page</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -273,56 +278,52 @@
         <table class="table table-striped projects">
               <thead>
                   <tr>
-                      <th style="width: 1%">
-                          ID
+                      <th style="width: 15%">
+                        Images
                       </th>
-                      <th style="width: 20%">
-                          Full name
+                      <th style="width: 15%">
+                        useeID
                       </th>
-                      <th style="width: 30%">
-                          DOB
+                      <th style="width: 15%">
+                         Full name
                       </th>
-                      <th>
-                           Date Of joining
+                      <th style="width: 15%">
+                          Email
                       </th>
-                      <th style="width: 8%" class="text-center">
-                          Employee Type
+                      <th style="width: 15%">
+                          Phone Number
                       </th>
-                      <th style="width: 20%">
+                      <th style="width: 15%" >
+                        Time report
                       </th>
                   </tr>
               </thead>
 
   <?php
-include "config/config.php";
+
+// include "config/config.php";
 $read_query = "SELECT * FROM add_teammates ";
 
 $data = mysqli_query($myConnection, $read_query);
 
 if(mysqli_num_rows($data)>0){
 
+
     while($row = mysqli_fetch_array($data)){
         echo"<tr>";
+        echo "<td>"."<img class='profile-user-img img-fluid img-circle' src=".$row['image'].' width=60px height="60px">'."</td>";
         echo "<td>".$row['id']."</td>";
         echo "<td>".$row['fname']."</td>";
-        echo "<td>".$row['dob']."</td>";
-        echo "<td>".$row['dateofjoining']."</td>";
-        echo "<td>".$row['emptype']."</td>";
+        echo "<td>".$row['pemail']."</td>";
+        echo "<td>".$row['pnumber']."</td>";
 
-        echo '<td class="project-actions text-right">'.'<a class="btn btn-primary btn-sm" href="profile.php?id='.$row['id'].'" style="margin-right:5px">'.'<i class="fas fa-folder">'.'</i>'.
-            "View"
+        echo '<td>'.
+        '<a class="btn btn-primary btn-sm" href="timescore.php?id='.$row['id'].'">'.'</i>'.
+        "Show report"
         .'</a>'.
-        '<a class="btn btn-info btn-sm" href="editteammates.php?id='.$row['id'].'" style="margin-right:5px">'.
-            '<i class="fas fa-pencil-alt">'.
-            '</i>'.
-            "Edit"
-        .'</a>'.
-        '<a class="btn btn-danger btn-sm" href="deleteteammember.php?id='.$row['id'].'" style="margin-right:5px">'.
-            '<i class="fas fa-trash">'.
-            '</i>'.
-            "Delete"
-        .'</a>'.
+
     '</td>';
+
         
         echo "</tr>";
     }
@@ -331,7 +332,11 @@ if(mysqli_num_rows($data)>0){
 }
 
 
+
 ?>
+
+
+
           </table>
 
         </div>

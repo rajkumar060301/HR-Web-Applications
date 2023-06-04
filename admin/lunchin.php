@@ -18,17 +18,17 @@ if(mysqli_num_rows($data_todo)>0){
 
   if (mysqli_query($myConnection, $update)) {
     echo "<script>alert('Lunchin is successfully')</script>";
-    echo "<script>location.href='memberprofile.php'</script>";
+    echo "<script>location.href='teammemberprofile.php'</script>";
 
   } else {
     echo "<script>alert('Lunch in is not successfully')</script>";
-    echo "<script>location.href='memberprofile.php'</script>";
+    echo "<script>location.href='teammemberprofile.php'</script>";
   }
 
 } else {
 
   // echo "<script>alert('Already lunch in today')</script>";
-  echo "<script>location.href='memberprofile.php'</script>";
+  echo "<script>location.href='teammemberprofile.php'</script>";
 
 }
 ?>
