@@ -53,25 +53,15 @@ $row = mysqli_fetch_array($data);
 </head>
 <body >
 <div class="wrapper">
- 
-
-
-
- 
 
     <!-- Main content -->
- 
 
     <section class="vh-100">
   <div class="container py-5 h-100">
     <div class="row d-flex justify-content-center align-items-center h-100">
       <div class="col">
         <div class="card" id="list1" style="border-radius: .75rem; background-color: #eff1f2;">
-
-        <!-- To do from start input  -->
-         <!-- <form action="todowork.php" method="post"> -->
-
-
+        
           <div class="card-body py-4 px-4 px-md-5">
           <h3>Hi, <?php echo $row['fname']; ?></h3>
 
