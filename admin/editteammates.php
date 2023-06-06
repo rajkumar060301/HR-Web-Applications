@@ -30,8 +30,23 @@
 <body class="hold-transition sidebar-mini">
 <!-- Site wrapper -->
 <?php
+session_start();
 $iD=$_GET['id'];
 include "config/config.php";
+$id = $_SESSION['adminID'];
+
+$fetch_query = "SELECT * FROM register where id=".$id;
+
+$data_register = mysqli_query($myConnection, $fetch_query);
+
+if(mysqli_num_rows($data_register)>0){
+
+$row_data = mysqli_fetch_array($data_register);
+
+        
+} else {
+    echo "Record Not found";
+}
 
 $read_query = "SELECT * FROM add_teammates WHERE id=".$iD;
 
@@ -196,12 +211,11 @@ $row = mysqli_fetch_array($data);
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <?php 
-            echo "<img class='img-circle elevation-2' src=".$row['image'].' width=128px height="128px">'; 
-            ?>
+        <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+
         </div>
         <div class="info">
-          <a href="#" class="d-block"><?php echo $row['fname'] ?></a>
+          <a href="#" class="d-block"><?php echo "Welcome! ".$row_data['fname'] ?></a>
         </div>
       </div>
 
@@ -237,7 +251,7 @@ $row = mysqli_fetch_array($data);
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a id='teammate' class="nav-link">
+                <a href='addteammate.php' class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Add Teammate</p>
                 </a>
@@ -282,6 +296,18 @@ $row = mysqli_fetch_array($data);
                 </p>
             </a>
           </li>
+          <li class="nav-item">
+          <a href="logout.php" class="nav-link">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-left" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M6 12.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v2a.5.5 0 0 1-1 0v-2A1.5 1.5 0 0 1 6.5 2h8A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 5 12.5v-2a.5.5 0 0 1 1 0v2z"/>
+  <path fill-rule="evenodd" d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z"/>
+</svg>
+                <p>
+                  Logout
+                </p>
+            </a>
+          </li>
+
         
       </nav>
       <!-- /.sidebar-menu -->

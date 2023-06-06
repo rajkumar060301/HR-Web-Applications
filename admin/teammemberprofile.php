@@ -53,8 +53,7 @@ $row = mysqli_fetch_array($data);
 </head>
 <body >
 <div class="wrapper">
-<<<<<<< HEAD
-=======
+<!-- <<<<<<< HEAD -->
 <nav class="main-header navbar navbar-expand navbar-white navbar-light">
     <!-- Left navbar links -->
     <ul class="navbar-nav">
@@ -196,7 +195,6 @@ $row = mysqli_fetch_array($data);
 
 
  
->>>>>>> 7e0f3edc3951378016311bbb423b5b3afbdd5e08
 
     <!-- Main content -->
 
@@ -301,6 +299,8 @@ $row = mysqli_fetch_array($data);
                       if($row_data['punchout']!= $lunchout ){
                         ?>
                             <button type="button" class="btn btn-primary" >Punch Out</button>
+                            <a href="teammemberlogout.php"><button type="button" class="btn btn-primary" >Logout</button></a>
+
                             <?php
                       }
                       else{
@@ -321,6 +321,8 @@ $row = mysqli_fetch_array($data);
               <a href="lunchin.php"><button type="button" class="btn btn-primary" onclick="lunchinTime();">Lunch Break</button></a>
               <a href="lunchout.php"><button type="button" class="btn btn-primary" >Back From Lunch</button></a>
               <button type="button" id="punchouting" class="btn btn-primary" onclick="punchOut()">Punch Out</button>
+              <a href="teammemberlogout.php"><button type="button" class="btn btn-primary" >Logout</button></a>
+
               <?php
             }
             ?>
