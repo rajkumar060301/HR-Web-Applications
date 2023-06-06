@@ -256,9 +256,10 @@ $row = mysqli_fetch_array($data);
                       <a href="lunchout.php"><button type="button" class="btn btn-primary" >Back From Lunch</button></a>  
 
                                 <script>
+
                                   function punchOut(){
+
                                     var getform = document.getElementById('showdiv').innerHTML += '<form action="todowork.php" method="post"><input  class="form-check-input me-0" type="checkbox" name="punchout" id="punchout1" aria-label="..." required/>'+"Select punchout time";
-                                    var getform = document.getElementById('showdiv').innerHTML += '<input type="text" class="form-control form-control-lg" id="exampleFormControlInput1" name="task" placeholder="Add new task " required>';
                                     var getform = document.getElementById('showdiv').innerHTML += '<div class="input-group date"  style="margin-top:5px"> <p class="btn btn-primary">Upwork time</p> <label for="hour">Hour:</label> <select name="upworkhour" id="hour" style="width: 100px;height :35px " required>'+
                                 "<?php
                                 for ($i = 1; $i <= 24; $i++) {
@@ -272,7 +273,7 @@ $row = mysqli_fetch_array($data);
                                     echo "<option value='$i' required>$formattedMinute</option>";
                                 }
                                 ?>"
-                                + '</select></div>';
+                                + '</select><input type="text" class="form-control form-control-lg" id="exampleFormControlInput1" name="upwork_task" placeholder="Add task worked on upwork " style="width: 100px;height :35px; margin-left: 5%; " required></div>';
                                       var getform = document.getElementById('showdiv').innerHTML += '<div class="input-group date"  style="margin-top:5px"><p class="btn btn-primary">Webtracker time</p><label for="hour">Hour:</label><select name="webtrackerhour" id="hour" style="width: 100px;height :35px " required>'+
                                 "<?php
                                 for ($i = 1; $i <= 24; $i++) {
@@ -287,16 +288,16 @@ $row = mysqli_fetch_array($data);
                                     echo "<option value='$i' required>$formattedMinute</option>";
                                 }
                                 ?>"+
-                                '</select></div>';
+                                '</select><input type="text" class="form-control form-control-lg" id="exampleFormControlInput1" name="webtracker_task" placeholder="Add task worked on web tracker " style="width: 100px;height :35px;margin-left: 3%; " required></div>';
 
                                 var submit = document.getElementById('showdiv').innerHTML += "<button type='submit' name='submit'>SUBMIT</button></form>";
 
                                   }
 
                                 </script>
+                               
                   <?php
 
-                
 
                       }
                       if($row_data['punchout']!= $lunchout ){
@@ -307,7 +308,7 @@ $row = mysqli_fetch_array($data);
                       else{
     
                         ?>
-                        <button type="button" id="punchouting" class="btn btn-primary" onclick="punchOut();">Punch Out</button>
+                        <button type="button" id="punchouting" class="btn btn-primary" onclick="punchOut(); this.onclick=null;">Punch Out</button>
     
                           
                           <?php
@@ -333,7 +334,7 @@ $row = mysqli_fetch_array($data);
 
             <?php if(mysqli_num_rows($data_todo)>0){ ?>
             
-          <form id='form' action="todowork.php" method="post" <?php if( $row_data['lunchout']!=$punchout && $row_data['task']=='' &&$row_data['punchin']!=$punchout) { echo "style='display:block'"; } else {  echo "style='display:none'";  } ?>>
+          <form id='form' action="todowork.php" method="post" <?php if( $row_data['lunchout']!=$punchout && $row_data['upwork_task']=='' &&$row_data['punchin']!=$punchout) { echo "style='display:block'"; } else {  echo "style='display:none'";  } ?>>
 
               <ul class="list-group list-group-horizontal rounded-0">
                 <li
@@ -349,14 +350,6 @@ $row = mysqli_fetch_array($data);
                 </li>
 
               </ul>
-              <div class="d-flex flex-row align-items-center">
-
-                      <input type="text" class="form-control form-control-lg" id="exampleFormControlInput1"
-                        name="task" placeholder="Add new task " required>
-                      <a href="#!" data-mdb-toggle="tooltip" title="Set due date">
-                      </a>
-
-                    </div>
 
               <div class="input-group date"  style="margin-top:5px">
               <p class="btn btn-primary">Upwork time</p>
@@ -378,6 +371,8 @@ $row = mysqli_fetch_array($data);
               }
               ?>
               </select>
+              <input type="text" class="form-control form-control-lg" id="exampleFormControlInput1"
+                        name="upwork_task" placeholder="Add task worked on upwork " style="width: 100px;height :35px; margin-left: 5%; " required>
 
               </div>
               <div class="input-group date"  style="margin-top:5px">
@@ -401,6 +396,8 @@ $row = mysqli_fetch_array($data);
               }
               ?>
               </select>
+              <input type="text" class="form-control form-control-lg" id="exampleFormControlInput1"
+                        name="webtracker_task" placeholder="Add task worked on web tracker " style="width: 100px;height :35px;margin-left: 3%; " required>
 
               </div>
 
