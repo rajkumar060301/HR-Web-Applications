@@ -1,3 +1,24 @@
+<?php 
+session_start();
+$id = $_SESSION['adminID'];
+include "config/config.php";
+
+$fetch_query = "SELECT * FROM register where id=".$id;
+
+$data_register = mysqli_query($myConnection, $fetch_query);
+
+if(mysqli_num_rows($data_register)>0){
+
+$row_data = mysqli_fetch_array($data_register);
+
+        
+} else {
+    echo "Record Not found";
+}
+$read_query = "SELECT * FROM add_teammates ";
+
+$data = mysqli_query($myConnection, $read_query);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -166,7 +187,7 @@
           <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Raj Kumar</a>
+          <a href="#" class="d-block">Welcome! <?php echo $row_data['fname'];?></a>
         </div>
       </div>
 
@@ -222,6 +243,28 @@
               </svg>
                 <p>
                   View Report
+                </p>
+            </a>
+          </li>
+          <li class="nav-item">
+          <a href="upwork.php" class="nav-link">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-stopwatch" viewBox="0 0 16 16">
+  <path d="M8.5 5.6a.5.5 0 1 0-1 0v2.9h-3a.5.5 0 0 0 0 1H8a.5.5 0 0 0 .5-.5V5.6z"/>
+  <path d="M6.5 1A.5.5 0 0 1 7 .5h2a.5.5 0 0 1 0 1v.57c1.36.196 2.594.78 3.584 1.64a.715.715 0 0 1 .012-.013l.354-.354-.354-.353a.5.5 0 0 1 .707-.708l1.414 1.415a.5.5 0 1 1-.707.707l-.353-.354-.354.354a.512.512 0 0 1-.013.012A7 7 0 1 1 7 2.071V1.5a.5.5 0 0 1-.5-.5zM8 3a6 6 0 1 0 .001 12A6 6 0 0 0 8 3z"/>
+</svg>
+                <p>
+                  upwork tracking
+                </p>
+            </a>
+          </li>
+          <li class="nav-item">
+          <a href="webtracker.php" class="nav-link">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-watch" viewBox="0 0 16 16">
+  <path d="M8.5 5a.5.5 0 0 0-1 0v2.5H6a.5.5 0 0 0 0 1h2a.5.5 0 0 0 .5-.5V5z"/>
+  <path d="M5.667 16C4.747 16 4 15.254 4 14.333v-1.86A5.985 5.985 0 0 1 2 8c0-1.777.772-3.374 2-4.472V1.667C4 .747 4.746 0 5.667 0h4.666C11.253 0 12 .746 12 1.667v1.86a5.99 5.99 0 0 1 1.918 3.48.502.502 0 0 1 .582.493v1a.5.5 0 0 1-.582.493A5.99 5.99 0 0 1 12 12.473v1.86c0 .92-.746 1.667-1.667 1.667H5.667zM13 8A5 5 0 1 0 3 8a5 5 0 0 0 10 0z"/>
+</svg>
+                <p>
+                  Web tracking
                 </p>
             </a>
           </li>
@@ -294,10 +337,8 @@
               </thead>
 
   <?php
-include "config/config.php";
-$read_query = "SELECT * FROM add_teammates ";
+// include "config/config.php";
 
-$data = mysqli_query($myConnection, $read_query);
 
 if(mysqli_num_rows($data)>0){
 
